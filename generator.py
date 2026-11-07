@@ -84,10 +84,10 @@ def _preflight(client, settings, messages, max_tokens):
     if (not isinstance(states, list) or not states
             or not all(isinstance(s, dict) and type(s.get('is_processing')) is bool
                        and type(s.get('n_ctx')) is int and s['n_ctx'] > 0 for s in states)):
-        raise GenerationError('Cannot verify the local model slot/context. Restart llama-server using start-llama.ps1. / Status slot dan konteks model tidak dapat diperiksa.')
+        raise GenerationError('Cannot verify the local model slot/context. Restart llama-server using start-llama.ps1.')
     available = [s for s in states if not s.get('is_processing')]
     if not available:
-        raise GenerationError('The local model is still processing another request. Do not keep retrying. If progress stays frozen, press Ctrl+C in the llama-server terminal and run start-llama.ps1 again. The web app can stay open. / Model masih memproses permintaan lain; jika macet, mulai ulang terminal llama-server saja.')
+        raise GenerationError('The local model is still processing another request. Do not keep retrying. If progress stays frozen, press Ctrl+C in the llama-server terminal and run start-llama.ps1 again. The web app can stay open.')
     context_size = min(s['n_ctx'] for s in available)
     try:
         template = client.post(root + '/apply-template', json={
@@ -103,9 +103,9 @@ def _preflight(client, settings, messages, max_tokens):
             raise ValueError('Invalid tokens')
         input_tokens = len(token_ids)
     except (ValueError, KeyError, TypeError):
-        raise GenerationError('Cannot verify this request with the model tokenizer. Check llama.cpp template/tokenizer support. / Permintaan tidak dapat diperiksa dengan tokenizer model.') from None
+        raise GenerationError('Cannot verify this request with the model tokenizer. Check llama.cpp template/tokenizer support.') from None
     if input_tokens + max_tokens + 384 > context_size:
-        raise GenerationError(f'This request is too large for the model context: {input_tokens} input tokens plus {max_tokens} reserved output tokens (context {context_size}). Shorten the reference notes or choose fewer questions. / Permintaan terlalu besar; persingkat catatan referensi atau kurangi jumlah soal.')
+        raise GenerationError(f'This request is too large for the model context: {input_tokens} input tokens plus {max_tokens} reserved output tokens (context {context_size}). Shorten the reference notes or choose fewer questions.')
 
 
 def _completion(client, settings, messages, schema, name, max_tokens):
@@ -146,7 +146,7 @@ def generate_quiz(topic: str, count: int, notes: str = "", settings: Settings | 
             for attempt in range(2):
                 try:
                     if progress:
-                        progress(f'Writing bilingual questions · attempt {attempt + 1}/2 / Menyusun soal dwibahasa')
+                        progress(f'Writing bilingual questions · attempt {attempt + 1}/2')
                     raw = _completion(local_client, settings, [
                         {"role": "system", "content": (PROMPTS / "system.txt").read_text(encoding="utf-8")},
                         {"role": "user", "content": prompt + feedback},
@@ -159,7 +159,7 @@ def generate_quiz(topic: str, count: int, notes: str = "", settings: Settings | 
                     for start in range(0, count, 2):
                         batch = quiz.model_copy(update={'questions': quiz.questions[start:start + 2]})
                         if progress:
-                            progress(f'Checking answers and translations · {start + 1}–{start + len(batch.questions)}/{count} / Memeriksa jawaban dan terjemahan')
+                            progress(f'Checking answers and translations · {start + 1}–{start + len(batch.questions)}/{count}')
                         review_input = json.dumps({"topic": topic, "reference_notes": notes,
                             'indexing': 'question_index is zero-based WITHIN THIS BATCH',
                             "candidate": batch.model_dump()}, ensure_ascii=False)
@@ -190,9 +190,9 @@ def generate_quiz(topic: str, count: int, notes: str = "", settings: Settings | 
                     })[:2500]
                 except (ValueError, KeyError, IndexError, TypeError, ValidationError):
                     feedback = "\nPrevious response failed validation. Return complete, valid JSON with the exact count, distinct questions, four distinct options and matching answer keys."
-            raise GenerationError('The quiz did not pass validation and quality review after two attempts. ' + failure_detail + ' Try a specific property/employee topic or Sample mode. / Kuis belum lolos pemeriksaan; gunakan topik yang lebih spesifik atau mode contoh.')
+            raise GenerationError('The quiz did not pass validation and quality review after two attempts. ' + failure_detail + ' Try a specific property/employee topic or Sample mode.')
     except httpx.TimeoutException:
-        raise GenerationError("The local model timed out. If GPU activity is idle and a previous request is stuck, press Ctrl+C in the llama-server terminal and run start-llama.ps1 again. For recurring Vulkan stalls on an NVIDIA GPU, use the project-local CUDA runtime described in README.md. Keep the web app open. / Model kehabisan waktu; jika macet, mulai ulang llama-server saja. Jangan terus mengirim permintaan baru.") from None
+        raise GenerationError("The local model timed out. If GPU activity is idle and a previous request is stuck, press Ctrl+C in the llama-server terminal and run start-llama.ps1 again. For recurring Vulkan stalls on an NVIDIA GPU, use the project-local CUDA runtime described in README.md. Keep the web app open.") from None
     except httpx.ConnectError:
         raise GenerationError("Cannot connect to the local model. Run start-llama.ps1 and wait for it to load, or choose Sample mode.") from None
     except httpx.HTTPStatusError as exc:

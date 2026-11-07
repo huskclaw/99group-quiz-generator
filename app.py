@@ -10,7 +10,7 @@ from generator import GenerationError, check_server, generate_quiz
 from quiz import results_json, score_quiz
 from samples import TOPICS, sample_quiz
 from settings import Settings
-from input_rules import MAX_NOTES_CHARS, MAX_TOPIC_CHARS, check_topic
+from input_rules import MAX_NOTES_CHARS, MAX_TOPIC_CHARS, OUTSIDE_TOPIC_WARNING, check_topic
 
 ROOT = Path(__file__).resolve().parent
 st.set_page_config(page_title="99 Learn · A little learning, every day", page_icon="🏡", layout="centered")
@@ -89,9 +89,9 @@ if page == "create":
             if len(topic.strip()) >= 3:
                 try:
                     if check_topic(topic) == 'outside':
-                        st.warning('This topic appears outside property, employee or company learning. Try a relevant topic, or explicitly continue for fun. / Topik tampaknya di luar properti, karyawan, atau perusahaan. Ganti topik atau lanjutkan untuk hiburan.')
+                        st.warning(OUTSIDE_TOPIC_WARNING)
                         consent_key = hashlib.sha256(topic.casefold().encode()).hexdigest()[:12]
-                        allow_off_topic = st.checkbox('Continue anyway for a fun quiz / Tetap lanjutkan untuk hiburan', key='fun_' + consent_key)
+                        allow_off_topic = st.checkbox('Continue anyway', key='fun_' + consent_key)
                         if not allow_off_topic:
                             input_error = 'Choose a relevant topic or tick Continue anyway.'
                 except ValueError as exc:
@@ -101,28 +101,27 @@ if page == "create":
                 notes = st.text_area("Reference notes", max_chars=MAX_NOTES_CHARS, height=170,
                                      placeholder="Paste a dated market briefing or article excerpt here.", key="notes")
                 st.caption("For current market updates, include dated facts here. URLs alone are not fetched. Notes stay in this session and go only to your local model.")
-                st.caption('Up to 3,000 characters, with a model-token budget check before every request. / Maksimal 3.000 karakter; batas token diperiksa sebelum setiap permintaan.')
+                st.caption('Up to 3,000 characters, with a model-token budget check before every request.')
             st.caption("Without source notes, quizzes use general knowledge and hypothetical examples. This app has no live news feed.")
         else:
             topic_id = st.selectbox("Pick a topic", list(TOPICS),
                                     format_func=lambda key: TOPICS[key]["title"], key="sample_topic")
             st.caption(TOPICS[topic_id]["description"])
-            st.caption(TOPICS[topic_id]['description_id'])
             st.info("Ready-made questions. No model or internet connection needed.", icon="⚡")
         count = st.select_slider("Number of questions", options=[1, 2, 3, 4, 5], value=5, key="count")
         st.caption("Four choices per question. One correct answer. About 2–4 minutes.")
         if mode == "AI mode" and not ready:
-            st.warning('The local model is unavailable or busy. Refresh its status when the current request finishes. If it is frozen, restart only llama-server; Sample mode remains available. / Model belum siap atau sibuk. Jika macet, mulai ulang llama-server saja.')
+            st.warning('The local model is unavailable or busy. Refresh its status when the current request finishes. If it is frozen, restart only llama-server; Sample mode remains available.')
         if st.button("Generate quiz" if mode == "AI mode" else "Start sample quiz", type="primary",
                      width="stretch", disabled=mode == "AI mode" and (not ready or bool(input_error))):
             try:
                 if mode == "Sample mode":
                     session = sample_quiz(topic_id, count)
                 else:
-                    with st.status('Preparing bilingual quiz / Menyiapkan kuis dwibahasa', expanded=False) as generation_status:
+                    with st.status('Preparing bilingual quiz', expanded=False) as generation_status:
                         session = generate_quiz(topic, count, notes, settings,
                             allow_off_topic=allow_off_topic, progress=lambda label: generation_status.update(label=label))
-                        generation_status.update(label='Quiz ready / Kuis siap', state='complete')
+                        generation_status.update(label='Quiz ready', state='complete')
                 load_quiz(session)
                 st.rerun()
             except (ValueError, GenerationError) as exc:
@@ -141,18 +140,15 @@ else:
     quiz = session.quiz
     steps(1 if page == "quiz" else 2)
     st.title(quiz.title)
-    if getattr(quiz, 'title_id', None):
-        st.caption(quiz.title_id)
     if not all(getattr(q, 'question_id', None) for q in quiz.questions):
-        st.info('This quiz was created before the bilingual update. Create a new quiz to see English and Indonesian together. / Kuis ini dibuat sebelum pembaruan dwibahasa; buat kuis baru untuk melihat kedua bahasa.')
+        st.info('This quiz was created before the bilingual update. Create a new quiz to see English and Indonesian together.')
     st.caption(f"{session.source} · {len(quiz.questions)} questions · " +
                ("AI quality review passed" if session.reviewed else "Prepared sample"))
     if getattr(session, 'topic_scope', 'work') == 'exploratory':
-        st.info('Fun quiz · outside work topics, continued by your choice. / Kuis hiburan · di luar topik pekerjaan, dilanjutkan atas pilihan Anda.')
+        st.info('Outside work topics · continued by your choice.')
     if session.source.startswith("Sample"):
         sample = next(item for item in TOPICS.values() if item["title"] == session.topic)
         st.info(sample["briefing"], icon="📖")
-        st.caption(sample['briefing_id'])
     elif session.has_notes:
         with st.expander("Source notes for this quiz", expanded=True):
             st.text(session.source_notes)

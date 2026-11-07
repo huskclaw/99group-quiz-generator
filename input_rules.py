@@ -3,6 +3,7 @@ import re
 
 MAX_TOPIC_CHARS = 160
 MAX_NOTES_CHARS = 3000
+OUTSIDE_TOPIC_WARNING = 'This topic appears outside property, employee or company learning. Try a relevant topic, or just continue anyway.'
 
 WORK_TERMS = {
     'property', 'properties', 'properti', 'real estate', 'realestate', 'agent', 'agen',
@@ -33,20 +34,20 @@ def readable_text(text: str, label: str) -> None:
         return
     words = re.findall(r'[A-Za-zÀ-ž]+', text)
     if not words:
-        raise ValueError(f'{label} must contain readable English or Indonesian text. / Gunakan teks bahasa Inggris atau Indonesia yang dapat dibaca.')
+        raise ValueError(f'{label} must contain readable English or Indonesian text.')
     # Ignore URL/path tokens when detecting unusually long unbroken words.
     prose = re.sub(r'https?://\S+', '', text)
     if re.search(r'[A-Za-z]{40,}', prose) or re.search(r'([A-Za-z]{1,10})\1{5,}', prose, re.I):
-        raise ValueError(f'{label} looks like repeated or random characters. Please enter meaningful text. / Masukkan teks yang bermakna, bukan karakter acak atau berulang.')
+        raise ValueError(f'{label} looks like repeated or random characters. Please enter meaningful text.')
     if len(words) >= 16 and len({w.casefold() for w in words}) / len(words) < .12:
-        raise ValueError(f'{label} contains excessive repetition. / Teks terlalu banyak mengulang kata yang sama.')
+        raise ValueError(f'{label} contains excessive repetition.')
 
 
 def check_topic(topic: str) -> str:
     """Return work or outside; direct instruction overrides and obvious noise are errors."""
-    readable_text(topic, 'Topic / Topik')
+    readable_text(topic, 'Topic')
     if OVERRIDE.search(topic):
-        raise ValueError('Enter a learning topic, not instructions to override the app. / Masukkan topik pembelajaran, bukan instruksi untuk mengubah aturan aplikasi.')
+        raise ValueError('Enter a learning topic, not instructions to override the app.')
     lowered = topic.casefold()
     return 'work' if any(re.search(r'(?<!\w)' + re.escape(term) + r'(?!\w)', lowered) for term in WORK_TERMS) else 'outside'
 
@@ -54,5 +55,5 @@ def check_topic(topic: str) -> str:
 def enforce_scope(topic: str, allow_off_topic: bool) -> str:
     scope = check_topic(topic)
     if scope == 'outside' and not allow_off_topic:
-        raise ValueError('This topic appears outside property, employee or company learning. Choose a relevant topic or explicitly continue for fun. / Topik tampaknya di luar properti, karyawan, atau perusahaan. Pilih topik yang sesuai atau lanjutkan untuk hiburan.')
+        raise ValueError(OUTSIDE_TOPIC_WARNING)
     return 'exploratory' if scope == 'outside' else 'work'

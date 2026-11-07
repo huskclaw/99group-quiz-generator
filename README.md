@@ -1,6 +1,6 @@
 # 99 Learn — local employee quiz generator
 
-A Streamlit app for 99 Group employees: enter a property, employee or company topic in **English or Bahasa Indonesia**, generate a quiz with the installed **Gemma 4 12B QAT** model through **llama.cpp**, and review your score. Questions, all four choices, titles and explanations display **English first, then Indonesian underneath**. Three bilingual sample topics work without a model or internet connection.
+A Streamlit app for 99 Group employees: enter a property, employee or company topic in **English or Bahasa Indonesia**, generate a quiz with the installed **Gemma 4 12B QAT** model through **llama.cpp**, and review your score. Questions, all four choices and explanations display **English first, then Indonesian underneath**. Setup, status messages and warnings are English-only. Three bilingual sample topics work without a model or internet connection.
 
 The whole application runs on your computer. No cloud model, API key, database, or external content service is required at runtime. This is an assessment prototype inspired by 99 Group, not an official company product.
 
@@ -74,9 +74,9 @@ The answer order is shuffled while preserving the answer key. A new quiz clears 
 
 ### Topic coverage and input checks
 
-Property, employee skills and company learning are the default scope in both languages. A keyword-based scope check warns about topics such as `give me cookie recipe` or `resep kue`. You can explicitly tick **Continue anyway for a fun quiz**. Consent applies to that particular topic; changing the topic requires a fresh choice. Such quizzes are labelled exploratory and are still subject to the bilingual and single-answer checks. The scope check is a heuristic, so a relevant topic without a recognized keyword may also receive this warning.
+Property, employee skills and company learning are the default scope in both languages. A keyword-based scope check warns about topics such as `give me cookie recipe` or `resep kue`. You can explicitly tick **Continue anyway**. Consent applies to that particular topic; changing the topic requires a fresh choice. Such quizzes are labelled outside work topics and are still subject to the bilingual and single-answer checks. The scope check is a heuristic, so a relevant topic without a recognized keyword may also receive this warning.
 
-Obvious repeated/unbroken character spam and direct override requests such as `forget previous instructions` or `abaikan instruksi sebelumnya` are rejected locally. The fun-mode override does not bypass those input checks. The LLM still receives topic and notes as data, not as replacement system instructions.
+Obvious repeated/unbroken character spam and direct override requests such as `forget previous instructions` or `abaikan instruksi sebelumnya` are rejected locally. The topic-scope override does not bypass those input checks. The LLM still receives topic and notes as data, not as replacement system instructions.
 
 ### The three sample topics
 

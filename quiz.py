@@ -113,9 +113,9 @@ def validate_request(topic: str, count: int, notes: str = "") -> str:
     if type(count) is not int or not 1 <= count <= 5:
         raise ValueError("Choose between 1 and 5 questions.")
     if len(notes) > MAX_NOTES_CHARS:
-        raise ValueError("Keep source notes within 3,000 characters. / Batasi catatan referensi hingga 3.000 karakter.")
-    readable_text(topic, 'Topic / Topik')
-    readable_text(notes, 'Reference notes / Catatan referensi')
+        raise ValueError("Keep source notes within 3,000 characters.")
+    readable_text(topic, 'Topic')
+    readable_text(notes, 'Reference notes')
     return topic
 
 
