@@ -1,1 +1,3 @@
 * text=auto eol=lf
+# Intentional padding tests the exact 3,000-character input boundary.
+examples/long-training-briefing.txt -whitespace

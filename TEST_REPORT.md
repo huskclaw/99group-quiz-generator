@@ -26,6 +26,8 @@ The final tested runtime is a separate **official llama.cpp b12182 CUDA 12.4** i
 
 Nine additional synthetic requests cycled through 1,447, 2,847 and 4,247 input tokens three times without a stall; see [context-probe.json](examples/context-probe.json). The mixed verification sequence on CUDA completed 23 inference requests, including the initial matrix, repeated probes, another Indonesian-topic run and the app check. These observations support the selected local configuration; they do not guarantee indefinite stability or prove the underlying Vulkan defect's cause.
 
+The exact 3,000-character briefing fixture contains 2,742 prose characters plus 258 intentional padding spaces to exercise the character-limit boundary. The separate tokenizer probes exercise substantive prompts up to 4,247 tokens; character padding is not presented as an equivalent token stress test.
+
 Quizzes were inspected for both-language presence, paired correct choices and explanation agreement. The app check confirms English question text, Indonesian text beneath it, bilingual answer options, both explanations after submission, and results-download availability through Streamlit AppTest. This remains headless functional verification; it does not replace browser/phone visual inspection.
 
 ### Review and scope corrections
