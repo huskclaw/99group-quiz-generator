@@ -1,0 +1,47 @@
+{
+  "title": "Property Floor-Area Calculation",
+  "topic": "A fun property floor-area puzzle using hypothetical dimensions",
+  "source": "AI generated · local Gemma",
+  "model": "gemma-4-12b",
+  "ai_quality_review": true,
+  "source_notes_provided": false,
+  "created_at": "2026-11-07T06:24:03+00:00",
+  "score": 1,
+  "total": 1,
+  "percentage": 100,
+  "questions": [
+    {
+      "question": "A hypothetical residential unit has a rectangular floor plan with a length of 12 meters and a width of 8 meters. If a balcony with an area of 15 square meters is added to the exterior, what is the total floor area of the unit?",
+      "options": [
+        "96 square meters",
+        "100 square meters",
+        "108 square meters",
+        "111 square meters"
+      ],
+      "correct_index": 3,
+      "explanation": "The main area is 12m x 8m = 96 square meters. Adding the 15 square meter balcony results in a total of 111 square meters.",
+      "selected_index": 3,
+      "is_correct": true
+    }
+  ],
+  "verification": {
+    "elapsed_seconds": 5.97,
+    "api_requests": 2,
+    "reference_notes": "",
+    "quality_review": {
+      "checks": [
+        {
+          "question_index": 0,
+          "reason": "The question provides specific dimensions and a defined operation (addition), leading to a single objectively defensible calculation (12 * 8 + 15 = 111). Distractors are plausible numerical results of common calculation errors (e.g., 12 * 8 = 96; 96 + 12 = 108).",
+          "criterion_is_explicit": true,
+          "defensible_indices": [
+            1
+          ]
+        }
+      ],
+      "approved": true,
+      "issues": []
+    },
+    "answer_selection": "Correct keys selected programmatically to verify scoring; not an employee attempt."
+  }
+}

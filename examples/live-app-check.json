@@ -1,0 +1,46 @@
+{
+  "title": "Property Campaign Analysis & Matching",
+  "topic": "Interpreting a fictional property campaign: viewing conversion and matching listings to explicit buyer constraints",
+  "source": "AI generated · local Gemma",
+  "model": "gemma-4-12b",
+  "ai_quality_review": true,
+  "source_notes_provided": false,
+  "created_at": "2026-11-07T06:24:23+00:00",
+  "score": 1,
+  "total": 2,
+  "percentage": 50,
+  "questions": [
+    {
+      "question": "A property campaign generated 120 qualified enquiries, resulting in 30 completed viewings. If the viewing conversion rate is defined as the number of completed viewings divided by the number of qualified enquiries, what is the conversion rate for this campaign?",
+      "options": [
+        "15%",
+        "25%",
+        "20%",
+        "30%"
+      ],
+      "correct_index": 1,
+      "explanation": "The calculation is 30 completed viewings divided by 120 qualified enquiries, which equals 0.25 or 25%.",
+      "selected_index": 1,
+      "is_correct": true
+    },
+    {
+      "question": "A buyer provides the following explicit constraints: a minimum of 3 bedrooms, a maximum price of Rp 2.5 billion, and a requirement for a balcony. Which of the following listings satisfies all three constraints?",
+      "options": [
+        "A 3-bedroom apartment priced at Rp 2.6 billion with a balcony.",
+        "A 4-bedroom house priced at Rp 2.4 billion with a balcony.",
+        "A 3-bedroom house priced at Rp 2.7 billion with a balcony.",
+        "A 2-bedroom apartment priced at Rp 2.2 billion with a balcony."
+      ],
+      "correct_index": 1,
+      "explanation": "This listing meets the minimum bedroom count (4 > 3), stays under the price cap (Rp 2.4B < Rp 2.5B), and includes the required balcony.",
+      "selected_index": 2,
+      "is_correct": false
+    }
+  ],
+  "verification": {
+    "method": "Streamlit AppTest with real local-model API calls; no model stub",
+    "elapsed_seconds": 10.97,
+    "answer_selection": "One correct and one deliberately wrong answer selected programmatically.",
+    "visual_browser_verification": false
+  }
+}

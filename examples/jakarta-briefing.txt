@@ -1,0 +1,5 @@
+FICTIONAL TRAINING BRIEFING, dated 7 November 2026. This is synthetic data, not a real market update.
+In Jakarta District A, median advertised price was Rp2.0 billion in September and Rp2.1 billion in October.
+New listings fell from 100 to 80, while enquiries rose from 200 to 240 over the same two months.
+The dataset covers District A only. It records advertised prices and enquiries, not completed sales or signed leases.
+No causal explanation for these changes is established by this dataset.

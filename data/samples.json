@@ -1,0 +1,116 @@
+[
+  {
+    "id": "agent-skills",
+    "title": "Property agent skills",
+    "description": "Qualify leads, communicate clearly, and use data with care.",
+    "briefing": "These scenarios test stable professional skills. They are not a ranking of the top skills in a particular year or an internal 99 Group policy.",
+    "questions": [
+      {
+        "question": "A buyer has a fixed purchase budget and must move within 60 days. To shortlist only homes that satisfy both stated constraints, which pair of filters should an agent apply?",
+        "options": ["Asking price and confirmed handover date", "Floor area and number of bedrooms", "Listing age and photo count", "Distance to the office and building age"],
+        "correct_index": 0,
+        "explanation": "Price checks the budget constraint, while the confirmed handover date checks whether the buyer can move within 60 days."
+      },
+      {
+        "question": "A team defines its viewing conversion rate as completed viewings divided by qualified enquiries. It records 80 qualified enquiries and 20 completed viewings. What is the rate?",
+        "options": ["20%", "25%", "40%", "60%"],
+        "correct_index": 1,
+        "explanation": "20 divided by 80 is 0.25, or 25%. The definition uses qualified enquiries as the denominator."
+      },
+      {
+        "question": "A listing says 90 square metres, but the owner's supplied floor plan says 80 square metres. Which action resolves the discrepancy before publishing a verified area?",
+        "options": ["Publish 85 square metres as the average", "Use 90 because it appears in the listing", "Ask the owner to reconcile the figures using reliable measurement records", "Use 80 and describe the extra 10 as balcony space"],
+        "correct_index": 2,
+        "explanation": "Verification requires reconciling the conflicting records. Averaging or inventing a reason does not establish the actual area."
+      },
+      {
+        "question": "An agent promises a client a written recap covering budget, preferred area, and next viewing date. Which message fulfils all three parts of that promise?",
+        "options": ["The area is great; let me know when you are free.", "Your viewing is Friday; I will send more photos soon.", "Your budget is Rp1.5 billion; I have several options.", "Budget: Rp1.5 billion. Area: Tebet. Next viewing: Friday at 10:00."],
+        "correct_index": 3,
+        "explanation": "The recap explicitly contains the agreed budget, location, and next viewing date and time."
+      },
+      {
+        "question": "An AI draft says a property is 'five minutes from the station', but no route or travel time was supplied. Which edit avoids presenting an unverified claim as fact?",
+        "options": ["Remove the travel-time claim until a route and travel mode are checked", "Change five minutes to approximately five minutes", "Replace five minutes with a short walk", "Keep it because the draft sounds confident"],
+        "correct_index": 0,
+        "explanation": "The distance and travel mode must be checked first. Softer wording does not verify the claim."
+      }
+    ]
+  },
+  {
+    "id": "jakarta-market",
+    "title": "Reading a Jakarta market briefing",
+    "description": "Turn a small market snapshot into sound conclusions.",
+    "briefing": "FICTIONAL TRAINING BRIEFING — not actual Jakarta market data. In District A, the median advertised price rises from Rp2.0 billion in Month 1 to Rp2.1 billion in Month 2. New listings fall from 100 to 80. Enquiries rise from 200 to 240. The report measures advertised prices, not completed sales. Its sample covers District A only.",
+    "questions": [
+      {
+        "question": "According to the fictional briefing, by what percentage did District A's median advertised price rise from Rp2.0 billion to Rp2.1 billion?",
+        "options": ["2%", "5%", "10%", "20%"],
+        "correct_index": 1,
+        "explanation": "The increase is Rp0.1 billion divided by the initial Rp2.0 billion, which equals 5%."
+      },
+      {
+        "question": "The briefing records 80 new listings and 240 enquiries in Month 2. What is the ratio of enquiries to new listings?",
+        "options": ["1 to 3", "2 to 1", "3 to 1", "4 to 1"],
+        "correct_index": 2,
+        "explanation": "240 divided by 80 is 3, so there are three enquiries for each new listing in this aggregate snapshot."
+      },
+      {
+        "question": "Which statement is directly supported by the fictional briefing?",
+        "options": ["Completed sale prices increased by 5%", "Every Jakarta district had fewer new listings", "District A's median advertised price increased between the two months", "District A's total completed sales increased"],
+        "correct_index": 2,
+        "explanation": "The report measures District A's advertised prices. It provides no completed-sale data or evidence about every Jakarta district."
+      },
+      {
+        "question": "New listings fell from 100 to 80 in the fictional briefing. What was the percentage decrease?",
+        "options": ["25%", "10%", "80%", "20%"],
+        "correct_index": 3,
+        "explanation": "The decrease is 20 listings relative to the original 100, which is 20%."
+      },
+      {
+        "question": "To calculate a citywide median completed-sale price for the same period, which additional dataset matches that measure?",
+        "options": ["Completed transaction prices covering the city and period", "District A's advertised prices from a third month", "The number of enquiries in a neighbouring city", "District A's average listing photo count"],
+        "correct_index": 0,
+        "explanation": "A citywide completed-sale measure requires actual transaction prices with matching geographic and time coverage."
+      }
+    ]
+  },
+  {
+    "id": "property-puzzles",
+    "title": "Property numbers & playful puzzles",
+    "description": "A lighter challenge with floor plans, viewings, and listing clues.",
+    "briefing": "All prices, schedules, and properties in these puzzles are hypothetical. Each question includes the assumptions needed to calculate one answer.",
+    "questions": [
+      {
+        "question": "A rectangular room is 6 metres long and 4 metres wide. A listing mascot insists it is 20 square metres. What is the actual floor area?",
+        "options": ["10 square metres", "20 square metres", "24 square metres", "28 square metres"],
+        "correct_index": 2,
+        "explanation": "A rectangle's area is length times width: 6 multiplied by 4 equals 24 square metres."
+      },
+      {
+        "question": "Three viewings each last 30 minutes. Travel between consecutive viewings takes 15 minutes. The first starts at 09:00, with no extra breaks. When does the third viewing finish?",
+        "options": ["10:30", "10:45", "11:15", "11:00"],
+        "correct_index": 3,
+        "explanation": "Three viewings take 90 minutes and the two journeys take 30 minutes. Two hours after 09:00 is 11:00."
+      },
+      {
+        "question": "A hypothetical unit costs Rp1.2 billion and earns Rp60 million in rent per year. Defining gross rental yield as annual rent divided by purchase price, before costs, what is the yield?",
+        "options": ["5%", "6%", "12%", "20%"],
+        "correct_index": 0,
+        "explanation": "Rp60 million divided by Rp1,200 million equals 0.05, or 5%, before any costs."
+      },
+      {
+        "question": "A buyer requires at least 2 bedrooms, a lift, and a price of at most Rp1 billion. Which hypothetical unit satisfies every requirement?",
+        "options": ["Unit A: 2 bedrooms, no lift, Rp900 million", "Unit B: 2 bedrooms, lift, Rp980 million", "Unit C: 1 bedroom, lift, Rp800 million", "Unit D: 3 bedrooms, lift, Rp1.1 billion"],
+        "correct_index": 1,
+        "explanation": "Only Unit B meets the bedroom, lift, and budget requirements at the same time."
+      },
+      {
+        "question": "A listing gets 150 views in Week 1 and 180 views in Week 2. What is the percentage increase, measured against Week 1?",
+        "options": ["16.7%", "30%", "20%", "120%"],
+        "correct_index": 2,
+        "explanation": "The increase is 30 views divided by the initial 150 views, which is 20%."
+      }
+    ]
+  }
+]

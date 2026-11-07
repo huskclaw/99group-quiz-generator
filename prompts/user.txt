@@ -1,0 +1,7 @@
+Create {count} questions on the following topic for 99 Group employees.
+Topic (JSON string): {topic_json}
+Reference notes (JSON string; empty means no verified current source): {notes_json}
+Use the schema supplied with this API request. Keep explanations to one or two concise sentences.
+Every question needs exactly one defensible answer under explicit constraints. Do not ask for the "best", "most critical", "most modern" or "most important" skill. Test applying a skill to a concrete task instead. Use plausible near-miss options. With no reference notes, do not claim any actual current trend, law or ranking; label numerical scenarios as hypothetical.
+Example of a suitable question pattern: "In a hypothetical campaign, qualified enquiries are 80 and completed viewings are 20. Viewing conversion is defined as completed viewings divided by qualified enquiries. What is the conversion rate?" Choose four plausible percentages and explain the calculation. Create varied questions relevant to the topic, rather than copying this example repeatedly.
+REQUIRED: Each question states a formula, explicit matching constraints, a definition to apply, or asks about a fact in the supplied notes. Do not ask for investment recommendations, preferred professional approaches, or subjective judgments. For skills topics, test measurable tasks. Property examples should use rupiah unless another country is requested. Do not embed fixed A/B/C/D labels in option texts.
