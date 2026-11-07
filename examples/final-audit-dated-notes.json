@@ -1,0 +1,138 @@
+{
+  "title": "Jakarta Property Briefing Analysis",
+  "title_id": "Analisis Ringkasan Properti Jakarta",
+  "topic": "Reading a fictional Jakarta property briefing dated 7 November 2026: calculate changes, distinguish asking from sale prices, and respect the dataset scope caref",
+  "topic_scope": "work",
+  "languages": [
+    "en",
+    "id"
+  ],
+  "source": "AI generated · local Gemma",
+  "model": "gemma-4-12b",
+  "ai_quality_review": true,
+  "source_notes_provided": true,
+  "created_at": "2026-11-07T09:32:37+00:00",
+  "score": 4,
+  "total": 5,
+  "percentage": 80,
+  "questions": [
+    {
+      "question": "Based on the briefing, what is the percentage increase in the median asking price in Region A from September to October?",
+      "options": [
+        "15%",
+        "10%",
+        "20%",
+        "5%"
+      ],
+      "correct_index": 3,
+      "explanation": "The price increased from Rp2.0 billion to Rp2.1 billion, which is a 5% increase from the initial value.",
+      "question_id": "Berdasarkan ringkasan, berapa persentase kenaikan median harga penawaran di Wilayah A dari September ke Oktober?",
+      "options_id": [
+        "15%",
+        "10%",
+        "20%",
+        "5%"
+      ],
+      "explanation_id": "Harga naik dari Rp2,0 miliar menjadi Rp2,1 miliar, yang merupakan kenaikan 5% dari nilai awal.",
+      "selected_index": 0,
+      "is_correct": false
+    },
+    {
+      "question": "In the separate training campaign, what is the conversion rate of visits based on the provided definition?",
+      "options": [
+        "80%",
+        "25%",
+        "40%",
+        "20%"
+      ],
+      "correct_index": 1,
+      "explanation": "The conversion rate is 20 visits divided by 80 qualified inquiries, which equals 25%.",
+      "question_id": "Dalam kampanye pelatihan terpisah, berapa tingkat konversi kunjungan berdasarkan definisi yang diberikan?",
+      "options_id": [
+        "80%",
+        "25%",
+        "40%",
+        "20%"
+      ],
+      "explanation_id": "Tingkat konversi adalah 20 kunjungan dibagi 80 pertanyaan yang memenuhi kriteria, yang sama dengan 25%.",
+      "selected_index": 1,
+      "is_correct": true
+    },
+    {
+      "question": "Which unit matches all the requirements of a hypothetical buyer seeking at least 3 bedrooms, a maximum price of Rp2.5 billion, and a balcony?",
+      "options": [
+        "Unit Q",
+        "Unit S",
+        "Unit P",
+        "Unit R"
+      ],
+      "correct_index": 2,
+      "explanation": "Unit P meets all three criteria: 3 bedrooms, Rp2.4 billion, and a balcony.",
+      "question_id": "Unit mana yang memenuhi semua persyaratan pembeli hipotetis yang menginginkan minimal 3 kamar tidur, harga maksimal Rp2,5 miliar, dan balkon?",
+      "options_id": [
+        "Unit Q",
+        "Unit S",
+        "Unit P",
+        "Unit R"
+      ],
+      "explanation_id": "Unit P memenuhi ketiga kriteria: 3 kamar tidur, Rp2,4 miliar, dan balkon.",
+      "selected_index": 2,
+      "is_correct": true
+    },
+    {
+      "question": "According to the briefing, what is the specific decrease in the number of new property listings in Region A?",
+      "options": [
+        "100",
+        "20",
+        "10",
+        "80"
+      ],
+      "correct_index": 1,
+      "explanation": "The number of new listings dropped from 100 to 80, resulting in a decrease of 20.",
+      "question_id": "Menurut ringkasan, berapa penurunan spesifik jumlah iklan properti baru di Wilayah A?",
+      "options_id": [
+        "100",
+        "20",
+        "10",
+        "80"
+      ],
+      "explanation_id": "Jumlah iklan baru turun dari 100 menjadi 80, menghasilkan penurunan sebesar 20.",
+      "selected_index": 1,
+      "is_correct": true
+    },
+    {
+      "question": "Which of the following statements is NOT supported by the data in the briefing?",
+      "options": [
+        "The median price in October was higher than September.",
+        "The decrease in listings proves a city-wide supply drop.",
+        "The number of inquiries increased in Region A.",
+        "The conversion rate for the training campaign was 25%."
+      ],
+      "correct_index": 1,
+      "explanation": "The briefing explicitly states that a decrease in listings in one region does not prove a city-wide supply drop.",
+      "question_id": "Manakah dari pernyataan berikut yang TIDAK didukung oleh data dalam ringkasan?",
+      "options_id": [
+        "Median harga di bulan Oktober lebih tinggi dari September.",
+        "Penurunan iklan membuktikan penurunan pasokan di seluruh kota.",
+        "Jumlah pertanyaan meningkat di Wilayah A.",
+        "Tingkat konversi untuk kampanye pelatihan adalah 25%."
+      ],
+      "explanation_id": "Ringkasan secara eksplisit menyatakan bahwa penurunan iklan di satu wilayah tidak membuktikan penurunan pasokan di seluruh kota.",
+      "selected_index": 1,
+      "is_correct": true
+    }
+  ],
+  "audit_input": {
+    "topic": "Reading a fictional Jakarta property briefing dated 7 November 2026: calculate changes, distinguish asking from sale prices, and respect the dataset scope caref",
+    "reference_notes": "RINGKASAN PELATIHAN FIKTIF ? bukan berita atau data pasar Jakarta yang sebenarnya. Seluruh angka berikut dibuat untuk latihan membaca laporan, bukan untuk mengambil keputusan investasi. Periode contoh adalah September dan Oktober 2026, dengan cakupan Wilayah A saja.\n\nMedian harga penawaran di Wilayah A adalah Rp2.0 miliar pada September dan Rp2.1 miliar pada Oktober. Iklan properti baru turun dari 100 menjadi 80. Jumlah pertanyaan calon pembeli naik dari 200 menjadi 240. Data mencatat harga yang diiklankan, bukan harga transaksi penjualan yang sudah selesai. Tidak ada kesimpulan sebab-akibat yang ditetapkan dalam ringkasan ini.\n\nTim menggunakan definisi tingkat konversi kunjungan sebagai jumlah kunjungan yang terlaksana dibagi jumlah pertanyaan calon pembeli yang memenuhi kriteria. Dalam kampanye pelatihan terpisah, ada 80 pertanyaan yang memenuhi kriteria dan 20 kunjungan terlaksana. Angka kampanye ini tidak boleh dicampur dengan jumlah pertanyaan pasar Wilayah A karena kelompok pengamatannya berbeda.\n\nPembaca diminta memperhatikan penyebut ketika menghitung persentase perubahan. Kenaikan selalu dibandingkan dengan nilai pada awal periode. Penurunan jumlah iklan tidak dengan sendirinya membuktikan bahwa pasokan rumah di seluruh kota ikut turun, karena laporan ini hanya memantau iklan baru dalam satu wilayah. Tidak tersedia jumlah seluruh rumah, stok aktif kumulatif, atau proyek pembangunan baru.\n\nLaporan juga tidak mencatat pendapatan rumah tangga, keputusan bank, tingkat bunga, aturan pajak, atau kebijakan pemerintah. Karena variabel tersebut tidak ada, pembaca tidak boleh menambahkan klaim mengenai perubahan regulasi atau kemampuan pembeli mendapatkan pinjaman. Pertanyaan latihan harus dapat dijawab dari angka dan definisi yang tertulis, tanpa menebak kondisi ekonomi nyata.\n\nUntuk latihan mencocokkan kebutuhan, seorang pembeli hipotetis mensyaratkan minimal 3 kamar tidur, harga maksimal Rp2.5 miliar, dan balkon. Unit P memiliki 3 kamar tidur, harga Rp2.4 miliar, dan balkon. Unit Q memiliki 2 kamar tidur, harga Rp2.2 miliar, dan balkon. Unit R memiliki 4 kamar tidur dan balkon, tetapi berharga Rp2.8 miliar. Unit S memiliki 3 kamar tidur dengan harga Rp2.3 miliar, tetapi tanpa balkon.\n\nSetiap syarat harus diperiksa secara bersamaan, bukan dipilih berdasarkan kesan umum terhadap properti. Satu kelebihan tidak menggantikan syarat wajib yang tidak terpenuhi. Label unit hanya digunakan untuk membedakan pilihan dalam skenario, bukan menunjukkan peringkat kualitas atau rekomendasi pembelian.\n\nCatatan kualitas data: median merupakan nilai tengah dalam kumpulan data yang diurutkan. Perubahan median harga penawaran tidak membuktikan bahwa setiap rumah mengalami kenaikan harga dengan besaran yang sama.                                                                                                                                                                                                                                                                  ",
+    "count": 5
+  },
+  "verification": {
+    "method": "Fresh Streamlit AppTest; real local-model API, no mocks",
+    "elapsed_seconds": 30.34,
+    "topic_characters": 160,
+    "notes_characters": 3000,
+    "answer_selection": "First answer deliberately wrong; remaining keys selected programmatically.",
+    "visual_browser_verification": false
+  }
+}

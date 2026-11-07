@@ -154,6 +154,16 @@ Find the PC's local IPv4 address with `ipconfig`, then open `http://YOUR_PC_IP:8
 
 ## Verify
 
+Final submission audit (7 November 2026): [FINAL_AUDIT.md](FINAL_AUDIT.md).
+Two fresh property-topic runs, including five questions with a 160-character topic
+and 3,000-character source notes, are readable in
+[examples/FINAL_PROPERTY_RUNS.md](examples/FINAL_PROPERTY_RUNS.md).
+Repeat those real Streamlit/model flows after starting llama-server with
+`python scripts/final_audit.py`. This overwrites only the two named final-audit
+JSON evidence files; rebuild their readable handoff with
+`python scripts/build_submission_guide.py`. Sample scoring was also checked in
+the desktop browser. No public repository or hosted demo has been verified.
+
 Offline automated checks:
 
 ```powershell

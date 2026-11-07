@@ -4,8 +4,17 @@ __pycache__/
 *.py[cod]
 *.log
 .env
+.env.*
+!.env.example
 .streamlit/secrets.toml
 *.gguf
 local.settings.ps1
 artifacts/
 .tools/
+venv/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+.DS_Store
+Thumbs.db

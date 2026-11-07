@@ -1,0 +1,75 @@
+{
+  "title": "Property Rental Yield Calculation",
+  "title_id": "Perhitungan Hasil Sewa Properti",
+  "topic": "Calculating hypothetical property rental yield using an explicitly stated annual-rent divided by purchase-price formula",
+  "topic_scope": "work",
+  "languages": [
+    "en",
+    "id"
+  ],
+  "source": "AI generated · local Gemma",
+  "model": "gemma-4-12b",
+  "ai_quality_review": true,
+  "source_notes_provided": false,
+  "created_at": "2026-11-07T09:32:07+00:00",
+  "score": 1,
+  "total": 2,
+  "percentage": 50,
+  "questions": [
+    {
+      "question": "In a hypothetical scenario, a property is purchased for Rp 1,000,000,000 and generates an annual rent of Rp 50,000,000. Using the formula (Annual Rent / Purchase Price) * 100, what is the rental yield?",
+      "options": [
+        "10%",
+        "50%",
+        "1%",
+        "5%"
+      ],
+      "correct_index": 3,
+      "explanation": "The calculation is (50,000,000 / 1,000,000,000) * 100, which equals 5%.",
+      "question_id": "Dalam skenario hipotetis, sebuah properti dibeli seharga Rp 1.000.000.000 dan menghasilkan sewa tahunan sebesar Rp 50.000.000. Menggunakan rumus (Sewa Tahunan / Harga Beli) * 100, berapakah hasil sewa (rental yield) tersebut?",
+      "options_id": [
+        "10%",
+        "50%",
+        "1%",
+        "5%"
+      ],
+      "explanation_id": "Perhitungannya adalah (50.000.000 / 1.000.000.000) * 100, yang menghasilkan 5%.",
+      "selected_index": 0,
+      "is_correct": false
+    },
+    {
+      "question": "In a hypothetical scenario, a property has a purchase price of Rp 2,500,000,000. If the annual rent is Rp 150,000,000, what is the rental yield based on the formula (Annual Rent / Purchase Price) * 100?",
+      "options": [
+        "4%",
+        "15%",
+        "8%",
+        "6%"
+      ],
+      "correct_index": 3,
+      "explanation": "The calculation is (150,000,000 / 2,500,000,000) * 100, which equals 6%.",
+      "question_id": "Dalam skenario hipotetis, sebuah properti memiliki harga beli Rp 2.500.000.000. Jika sewa tahunannya adalah Rp 150.000.000, berapakah hasil sewa (rental yield) berdasarkan rumus (Sewa Tahunan / Harga Beli) * 100?",
+      "options_id": [
+        "4%",
+        "15%",
+        "8%",
+        "6%"
+      ],
+      "explanation_id": "Perhitungannya adalah (150.000.000 / 2.500.000.000) * 100, yang menghasilkan 6%.",
+      "selected_index": 3,
+      "is_correct": true
+    }
+  ],
+  "audit_input": {
+    "topic": "Calculating hypothetical property rental yield using an explicitly stated annual-rent divided by purchase-price formula",
+    "reference_notes": "",
+    "count": 2
+  },
+  "verification": {
+    "method": "Fresh Streamlit AppTest; real local-model API, no mocks",
+    "elapsed_seconds": 14.89,
+    "topic_characters": 119,
+    "notes_characters": 0,
+    "answer_selection": "First answer deliberately wrong; remaining keys selected programmatically.",
+    "visual_browser_verification": false
+  }
+}
