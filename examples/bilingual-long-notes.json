@@ -1,0 +1,298 @@
+{
+  "title": "Jakarta Property Market Updates Training",
+  "title_id": "Pelatihan Pembaruan Pasar Properti Jakarta",
+  "topic": "Property market updates in Jakarta",
+  "topic_scope": "work",
+  "languages": [
+    "en",
+    "id"
+  ],
+  "source": "AI generated · local Gemma",
+  "model": "gemma-4-12b",
+  "ai_quality_review": true,
+  "source_notes_provided": true,
+  "created_at": "2026-11-07T08:40:22+00:00",
+  "score": 5,
+  "total": 5,
+  "percentage": 100,
+  "questions": [
+    {
+      "question": "Based on the provided briefing, what is the median asking price in Area A for October?",
+      "options": [
+        "Rp2.0 billion",
+        "Rp2.1 billion",
+        "Rp2.2 billion",
+        "Rp2.4 billion"
+      ],
+      "correct_index": 1,
+      "explanation": "The briefing states the median asking price in Area A is Rp2.1 billion in October.",
+      "question_id": "Berdasarkan pengarahan yang diberikan, berapa median harga penawaran di Wilayah A untuk bulan Oktober?",
+      "options_id": [
+        "Rp2,0 miliar",
+        "Rp2,1 miliar",
+        "Rp2,2 miliar",
+        "Rp2,4 miliar"
+      ],
+      "explanation_id": "Pengarahan menyatakan median harga penawaran di Wilayah A adalah Rp2,1 miliar pada bulan Oktober.",
+      "selected_index": 1,
+      "is_correct": true
+    },
+    {
+      "question": "In a hypothetical scenario, which unit meets all the buyer's requirements of at least 3 bedrooms, a maximum price of Rp2.5 billion, and a balcony?",
+      "options": [
+        "Unit R",
+        "Unit P",
+        "Unit Q",
+        "Unit S"
+      ],
+      "correct_index": 1,
+      "explanation": "Unit P has 3 bedrooms, costs Rp2.4 billion, and has a balcony, meeting all three criteria.",
+      "question_id": "Dalam skenario hipotetis, unit mana yang memenuhi semua persyaratan pembeli yaitu minimal 3 kamar tidur, harga maksimal Rp2,5 miliar, dan balkon?",
+      "options_id": [
+        "Unit R",
+        "Unit P",
+        "Unit Q",
+        "Unit S"
+      ],
+      "explanation_id": "Unit P memiliki 3 kamar tidur, seharga Rp2,4 miliar, dan memiliki balkon, memenuhi ketiga kriteria.",
+      "selected_index": 1,
+      "is_correct": true
+    },
+    {
+      "question": "According to the briefing, what is the conversion rate of visits for the separate training campaign?",
+      "options": [
+        "40%",
+        "20%",
+        "80%",
+        "25%"
+      ],
+      "correct_index": 3,
+      "explanation": "The conversion rate is calculated as 20 visits divided by 80 qualified inquiries, which equals 25%.",
+      "question_id": "Menurut pengarahan, berapa tingkat konversi kunjungan untuk kampanye pelatihan terpisah?",
+      "options_id": [
+        "40%",
+        "20%",
+        "80%",
+        "25%"
+      ],
+      "explanation_id": "Tingkat konversi dihitung sebagai 20 kunjungan dibagi 80 pertanyaan yang memenuhi kriteria, yang hasilnya adalah 25%.",
+      "selected_index": 3,
+      "is_correct": true
+    },
+    {
+      "question": "What is the percentage increase in the number of inquiries from September to October?",
+      "options": [
+        "40%",
+        "20%",
+        "33.3%",
+        "25%"
+      ],
+      "correct_index": 1,
+      "explanation": "The increase from 200 to 240 inquiries is a 20% rise compared to the initial value of 200.",
+      "question_id": "Berapa persentase kenaikan jumlah pertanyaan dari bulan September ke Oktober?",
+      "options_id": [
+        "40%",
+        "20%",
+        "33,3%",
+        "25%"
+      ],
+      "explanation_id": "Kenaikan dari 200 ke 240 pertanyaan adalah kenaikan sebesar 20% dibandingkan dengan nilai awal 200.",
+      "selected_index": 1,
+      "is_correct": true
+    },
+    {
+      "question": "Which statement is correct regarding the property data provided in the briefing?",
+      "options": [
+        "The decrease in ads proves the city's total supply dropped.",
+        "The report tracks actual completed sales prices.",
+        "The report includes household income data.",
+        "The data tracks advertised prices in Area A."
+      ],
+      "correct_index": 3,
+      "explanation": "The briefing explicitly states that the data records advertised prices, not completed sales prices.",
+      "question_id": "Pernyataan mana yang benar mengenai data properti yang diberikan dalam pengarahan?",
+      "options_id": [
+        "Penurunan iklan membuktikan pasokan total kota turun.",
+        "Laporan melacak harga penjualan yang sudah selesai.",
+        "Laporan mencakup data pendapatan rumah tangga.",
+        "Data melacak harga yang diiklankan di Wilayah A."
+      ],
+      "explanation_id": "Pengarahan secara eksplisit menyatakan bahwa data mencatat harga yang diiklankan, bukan harga penjualan yang sudah selesai.",
+      "selected_index": 3,
+      "is_correct": true
+    }
+  ],
+  "verification": {
+    "elapsed_seconds": 27.31,
+    "api_completions": 4,
+    "notes_characters": 3000,
+    "reviewed_candidate": {
+      "title": "Jakarta Property Market Updates Training",
+      "questions": [
+        {
+          "question": "Based on the provided briefing, what is the median asking price in Area A for October?",
+          "options": [
+            "Rp2.0 billion",
+            "Rp2.1 billion",
+            "Rp2.2 billion",
+            "Rp2.4 billion"
+          ],
+          "correct_index": 1,
+          "explanation": "The briefing states the median asking price in Area A is Rp2.1 billion in October.",
+          "question_id": "Berdasarkan pengarahan yang diberikan, berapa median harga penawaran di Wilayah A untuk bulan Oktober?",
+          "options_id": [
+            "Rp2,0 miliar",
+            "Rp2,1 miliar",
+            "Rp2,2 miliar",
+            "Rp2,4 miliar"
+          ],
+          "explanation_id": "Pengarahan menyatakan median harga penawaran di Wilayah A adalah Rp2,1 miliar pada bulan Oktober."
+        },
+        {
+          "question": "In a hypothetical scenario, which unit meets all the buyer's requirements of at least 3 bedrooms, a maximum price of Rp2.5 billion, and a balcony?",
+          "options": [
+            "Unit P",
+            "Unit Q",
+            "Unit R",
+            "Unit S"
+          ],
+          "correct_index": 0,
+          "explanation": "Unit P has 3 bedrooms, costs Rp2.4 billion, and has a balcony, meeting all three criteria.",
+          "question_id": "Dalam skenario hipotetis, unit mana yang memenuhi semua persyaratan pembeli yaitu minimal 3 kamar tidur, harga maksimal Rp2,5 miliar, dan balkon?",
+          "options_id": [
+            "Unit P",
+            "Unit Q",
+            "Unit R",
+            "Unit S"
+          ],
+          "explanation_id": "Unit P memiliki 3 kamar tidur, seharga Rp2,4 miliar, dan memiliki balkon, memenuhi ketiga kriteria."
+        },
+        {
+          "question": "According to the briefing, what is the conversion rate of visits for the separate training campaign?",
+          "options": [
+            "20%",
+            "25%",
+            "40%",
+            "80%"
+          ],
+          "correct_index": 1,
+          "explanation": "The conversion rate is calculated as 20 visits divided by 80 qualified inquiries, which equals 25%.",
+          "question_id": "Menurut pengarahan, berapa tingkat konversi kunjungan untuk kampanye pelatihan terpisah?",
+          "options_id": [
+            "20%",
+            "25%",
+            "40%",
+            "80%"
+          ],
+          "explanation_id": "Tingkat konversi dihitung sebagai 20 kunjungan dibagi 80 pertanyaan yang memenuhi kriteria, yang hasilnya adalah 25%."
+        },
+        {
+          "question": "What is the percentage increase in the number of inquiries from September to October?",
+          "options": [
+            "20%",
+            "25%",
+            "33.3%",
+            "40%"
+          ],
+          "correct_index": 0,
+          "explanation": "The increase from 200 to 240 inquiries is a 20% rise compared to the initial value of 200.",
+          "question_id": "Berapa persentase kenaikan jumlah pertanyaan dari bulan September ke Oktober?",
+          "options_id": [
+            "20%",
+            "25%",
+            "33,3%",
+            "40%"
+          ],
+          "explanation_id": "Kenaikan dari 200 ke 240 pertanyaan adalah kenaikan sebesar 20% dibandingkan dengan nilai awal 200."
+        },
+        {
+          "question": "Which statement is correct regarding the property data provided in the briefing?",
+          "options": [
+            "The report tracks actual completed sales prices.",
+            "The decrease in ads proves the city's total supply dropped.",
+            "The report includes household income data.",
+            "The data tracks advertised prices in Area A."
+          ],
+          "correct_index": 3,
+          "explanation": "The briefing explicitly states that the data records advertised prices, not completed sales prices.",
+          "question_id": "Pernyataan mana yang benar mengenai data properti yang diberikan dalam pengarahan?",
+          "options_id": [
+            "Laporan melacak harga penjualan yang sudah selesai.",
+            "Penurunan iklan membuktikan pasokan total kota turun.",
+            "Laporan mencakup data pendapatan rumah tangga.",
+            "Data melacak harga yang diiklankan di Wilayah A."
+          ],
+          "explanation_id": "Pengarahan secara eksplisit menyatakan bahwa data mencatat harga yang diiklankan, bukan harga penjualan yang sudah selesai."
+        }
+      ],
+      "title_id": "Pelatihan Pembaruan Pasar Properti Jakarta"
+    },
+    "quality_reviews": [
+      {
+        "checks": [
+          {
+            "question_index": 0,
+            "reason": "The question uses an explicit fact from the reference notes (median price in October). Distractors are plausible but incorrect based on the text.",
+            "criterion_is_explicit": true,
+            "defensible_indices": [
+              1
+            ],
+            "translation_is_faithful": true
+          },
+          {
+            "question_index": 1,
+            "reason": "The question uses a hypothetical scenario with explicit constraints (3+ bedrooms, max Rp2.5B, balcony). Unit P is the only one meeting all three; Q lacks bedrooms, R exceeds price, S lacks a balcony.",
+            "criterion_is_explicit": true,
+            "defensible_indices": [
+              0
+            ],
+            "translation_is_faithful": true
+          }
+        ],
+        "approved": true,
+        "issues": []
+      },
+      {
+        "checks": [
+          {
+            "question_index": 0,
+            "reason": "The question uses a defined formula (visits divided by qualified inquiries) and explicit numbers (20 and 80) provided in the notes.",
+            "criterion_is_explicit": true,
+            "defensible_indices": [
+              1
+            ],
+            "translation_is_faithful": true
+          },
+          {
+            "question_index": 1,
+            "reason": "The question uses a defined formula (change compared to initial value) and explicit numbers (200 and 240) provided in the notes.",
+            "criterion_is_explicit": true,
+            "defensible_indices": [
+              0
+            ],
+            "translation_is_faithful": true
+          }
+        ],
+        "approved": true,
+        "issues": []
+      },
+      {
+        "checks": [
+          {
+            "question_index": 0,
+            "reason": "The question tests the distinction between advertised prices and completed sales prices, which is a specific fact in the notes. Options 0, 1, and 2 are explicitly refuted by the notes (sales prices vs advertised, city supply vs area ads, and absence of income data).",
+            "criterion_is_explicit": true,
+            "defensible_indices": [
+              3
+            ],
+            "translation_is_faithful": true
+          }
+        ],
+        "approved": true,
+        "issues": []
+      }
+    ],
+    "audit_option_order": "Each audit uses zero-based question/option indices in its pre-shuffle batch of up to two questions.",
+    "answer_selection": "Correct keys selected programmatically; not an employee attempt."
+  }
+}

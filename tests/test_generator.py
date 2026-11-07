@@ -9,25 +9,31 @@ from samples import TOPICS
 from settings import Settings
 
 DOMAIN_QUESTIONS = TOPICS["agent-skills"]["questions"][:2]
-QUIZ = {"title": "Property agent skills", "questions": [
+QUIZ = {"title": "Property agent skills", 'title_id': 'Keterampilan agen properti', "questions": [
     {**{k: v for k, v in q.items() if k != "correct_index"},
      "correct_answer": q["options"][q["correct_index"]]} for q in DOMAIN_QUESTIONS]}
 CHECKS = [{"question_index": i, "reason": "This question has one answer under its explicit constraints.",
-           "criterion_is_explicit": True, "defensible_indices": [q["correct_index"]]}
+           "criterion_is_explicit": True, 'translation_is_faithful': True, "defensible_indices": [q["correct_index"]]}
           for i, q in enumerate(DOMAIN_QUESTIONS)]
 APPROVED = {"checks": CHECKS, "approved": True, "issues": []}
 REJECTED = {"checks": CHECKS, "approved": False, "issues": ["Ambiguous question"]}
 
 
-def mock_client(responses, requests):
+def mock_client(responses, requests, finish_reason='stop'):
     def handle(request):
+        if request.url.path == '/slots':
+            return httpx.Response(200, json=[{'n_ctx': 8192, 'is_processing': False}])
+        if request.url.path == '/apply-template':
+            return httpx.Response(200, json={'prompt': 'Rendered prompt'})
+        if request.url.path == '/tokenize':
+            return httpx.Response(200, json={'tokens': [1] * 100})
         requests.append(json.loads(request.content))
         item = responses.pop(0)
         if isinstance(item, Exception):
             raise item
         if isinstance(item, int):
             return httpx.Response(item)
-        return httpx.Response(200, json={"choices": [{"finish_reason": "stop",
+        return httpx.Response(200, json={"choices": [{"finish_reason": finish_reason,
             "message": {"content": json.dumps(item)}}]})
     return httpx.Client(transport=httpx.MockTransport(handle))
 
@@ -42,7 +48,7 @@ def test_generation_review_and_exact_count_schema():
     assert calls[0]["cache_prompt"] is False
     schema = calls[0]["response_format"]["json_schema"]["schema"]
     assert schema["properties"]["questions"]["minItems"] == 2
-    assert calls[1]["messages"][0]["content"].startswith("You are a strict quiz editor")
+    assert calls[1]["messages"][0]["content"].startswith("You are a strict bilingual quiz editor")
 
 
 def test_rejected_review_triggers_one_revision():
@@ -68,6 +74,15 @@ def test_approval_cannot_override_ambiguous_option_audit():
     with mock_client([QUIZ, overconfident] * 2, []) as client:
         with pytest.raises(GenerationError):
             generate_quiz("Agent skills", 2, client=client)
+
+
+def test_translation_disagreement_cannot_be_overridden_by_approval():
+    checks = [dict(c) for c in CHECKS]
+    checks[0]['translation_is_faithful'] = False
+    invalid = {'checks': checks, 'approved': True, 'issues': []}
+    with mock_client([QUIZ, invalid] * 2, []) as client:
+        with pytest.raises(GenerationError, match='English and Indonesian'):
+            generate_quiz('Agent skills', 2, client=client)
 
 
 def test_review_must_cover_every_question_once():
@@ -102,9 +117,7 @@ def test_timeout_is_safe():
 
 
 def test_truncated_response_rejected():
-    def handle(request):
-        return httpx.Response(200, json={"choices": [{"finish_reason": "length", "message": {"content": json.dumps(QUIZ)}}]})
-    with httpx.Client(transport=httpx.MockTransport(handle)) as client:
+    with mock_client([QUIZ, QUIZ], [], finish_reason='length') as client:
         with pytest.raises(GenerationError):
             generate_quiz("Agent skills", 2, client=client)
 

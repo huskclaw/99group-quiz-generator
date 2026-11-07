@@ -1,0 +1,68 @@
+{
+  "title": "Property Campaign Analysis",
+  "title_id": "Analisis Kampanye Properti",
+  "topic": "Interpreting a fictional property campaign: viewing conversion and matching listings to explicit buyer constraints",
+  "topic_scope": "work",
+  "languages": [
+    "en",
+    "id"
+  ],
+  "source": "AI generated · local Gemma",
+  "model": "gemma-4-12b",
+  "ai_quality_review": true,
+  "source_notes_provided": false,
+  "created_at": "2026-11-07T08:41:45+00:00",
+  "score": 1,
+  "total": 2,
+  "percentage": 50,
+  "questions": [
+    {
+      "question": "In a hypothetical scenario, a property campaign had 500 total website visits and resulted in 25 viewing appointments. What is the conversion rate of visits to viewing appointments?",
+      "options": [
+        "10%",
+        "50%",
+        "2.5%",
+        "5%"
+      ],
+      "correct_index": 3,
+      "explanation": "The conversion rate is calculated by dividing 25 appointments by 500 visits.",
+      "question_id": "Dalam skenario hipotetis, sebuah kampanye properti memiliki 500 total kunjungan situs web dan menghasilkan 25 janji temu kunjungan. Berapakah tingkat konversi kunjungan menjadi janji temu kunjungan?",
+      "options_id": [
+        "10%",
+        "50%",
+        "2,5%",
+        "5%"
+      ],
+      "explanation_id": "Tingkat konversi dihitung dengan membagi 25 janji temu dengan 500 kunjungan.",
+      "selected_index": 3,
+      "is_correct": true
+    },
+    {
+      "question": "A buyer requires a property with exactly 3 bedrooms, a swimming pool, and a price under Rp 5.000.000.000. Which listing matches every constraint?",
+      "options": [
+        "Listing C: 3 bedrooms, swimming pool, Rp 4.900.000.000",
+        "Listing B: 3 bedrooms, no pool, Rp 4.800.000.000",
+        "Listing A: 2 bedrooms, swimming pool, Rp 4.500.000.000",
+        "Listing D: 4 bedrooms, swimming pool, Rp 4.700.000.000"
+      ],
+      "correct_index": 0,
+      "explanation": "Listing C is the only option that meets the bedroom count, pool requirement, and price cap.",
+      "question_id": "Seorang pembeli membutuhkan properti dengan tepat 3 kamar tidur, kolam renang, dan harga di bawah Rp 5.000.000.000. Listing mana yang memenuhi setiap batasan?",
+      "options_id": [
+        "Listing C: 3 kamar tidur, kolam renang, Rp 4.900.000.000",
+        "Listing B: 3 kamar tidur, tanpa kolam, Rp 4.800.000.000",
+        "Listing A: 2 kamar tidur, kolam renang, Rp 4.500.000.000",
+        "Listing D: 4 kamar tidur, kolam renang, Rp 4.700.000.000"
+      ],
+      "explanation_id": "Listing C adalah satu-satunya pilihan yang memenuhi jumlah kamar tidur, persyaratan kolam renang, dan batas harga.",
+      "selected_index": 1,
+      "is_correct": false
+    }
+  ],
+  "verification": {
+    "method": "Streamlit AppTest with real local-model API calls; no model stub",
+    "elapsed_seconds": 14.23,
+    "answer_selection": "One correct and one deliberately wrong answer selected programmatically.",
+    "visual_browser_verification": false
+  }
+}

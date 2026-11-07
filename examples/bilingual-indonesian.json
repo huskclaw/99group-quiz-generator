@@ -1,0 +1,139 @@
+{
+  "title": "Property Agent Skills: Matching & Conversion",
+  "title_id": "Keterampilan Agen Properti: Pencocokan & Konversi",
+  "topic": "Keterampilan agen properti: mencocokkan rumah dengan syarat pembeli dan menghitung rasio 20 kunjungan dari 80 calon pembeli",
+  "topic_scope": "work",
+  "languages": [
+    "en",
+    "id"
+  ],
+  "source": "AI generated · local Gemma",
+  "model": "gemma-4-12b",
+  "ai_quality_review": true,
+  "source_notes_provided": false,
+  "created_at": "2026-11-07T08:41:30+00:00",
+  "score": 2,
+  "total": 2,
+  "percentage": 100,
+  "questions": [
+    {
+      "question": "A buyer requires a house with 3 bedrooms, a garden, and a price under Rp 1.500.000.000. Which listing matches all requirements?",
+      "options": [
+        "3 bedrooms, garden, Rp 1.450.000.000",
+        "2 bedrooms, garden, Rp 1.300.000.000",
+        "4 bedrooms, garden, Rp 1.600.000.000",
+        "3 bedrooms, no garden, Rp 1.400.000.000"
+      ],
+      "correct_index": 0,
+      "explanation": "This is the only listing that meets all three specific criteria.",
+      "question_id": "Seorang pembeli membutuhkan rumah dengan 3 kamar tidur, taman, dan harga di bawah Rp 1.500.000.000. Listing mana yang memenuhi semua persyaratan?",
+      "options_id": [
+        "3 kamar tidur, taman, Rp 1.450.000.000",
+        "2 kamar tidur, taman, Rp 1.300.000.000",
+        "4 kamar tidur, taman, Rp 1.600.000.000",
+        "3 kamar tidur, tanpa taman, Rp 1.400.000.000"
+      ],
+      "explanation_id": "Ini adalah satu-satunya listing yang memenuhi ketiga kriteria spesifik tersebut.",
+      "selected_index": 0,
+      "is_correct": true
+    },
+    {
+      "question": "An agent achieves 20 successful house viewings out of 80 total potential buyer inquiries. What is the conversion rate percentage?",
+      "options": [
+        "25%",
+        "40%",
+        "80%",
+        "20%"
+      ],
+      "correct_index": 0,
+      "explanation": "The conversion rate is calculated as (20 / 80) * 100%.",
+      "question_id": "Seorang agen mencapai 20 kunjungan rumah yang berhasil dari 80 total pertanyaan calon pembeli. Berapa persentase rasio konversinya?",
+      "options_id": [
+        "25%",
+        "40%",
+        "80%",
+        "20%"
+      ],
+      "explanation_id": "Rasio konversi dihitung sebagai (20 / 80) * 100%.",
+      "selected_index": 0,
+      "is_correct": true
+    }
+  ],
+  "verification": {
+    "elapsed_seconds": 13.42,
+    "api_completions": 2,
+    "notes_characters": 0,
+    "reviewed_candidate": {
+      "title": "Property Agent Skills: Matching & Conversion",
+      "questions": [
+        {
+          "question": "A buyer requires a house with 3 bedrooms, a garden, and a price under Rp 1.500.000.000. Which listing matches all requirements?",
+          "options": [
+            "3 bedrooms, no garden, Rp 1.400.000.000",
+            "2 bedrooms, garden, Rp 1.300.000.000",
+            "3 bedrooms, garden, Rp 1.450.000.000",
+            "4 bedrooms, garden, Rp 1.600.000.000"
+          ],
+          "correct_index": 2,
+          "explanation": "This is the only listing that meets all three specific criteria.",
+          "question_id": "Seorang pembeli membutuhkan rumah dengan 3 kamar tidur, taman, dan harga di bawah Rp 1.500.000.000. Listing mana yang memenuhi semua persyaratan?",
+          "options_id": [
+            "3 kamar tidur, tanpa taman, Rp 1.400.000.000",
+            "2 kamar tidur, taman, Rp 1.300.000.000",
+            "3 kamar tidur, taman, Rp 1.450.000.000",
+            "4 kamar tidur, taman, Rp 1.600.000.000"
+          ],
+          "explanation_id": "Ini adalah satu-satunya listing yang memenuhi ketiga kriteria spesifik tersebut."
+        },
+        {
+          "question": "An agent achieves 20 successful house viewings out of 80 total potential buyer inquiries. What is the conversion rate percentage?",
+          "options": [
+            "20%",
+            "25%",
+            "40%",
+            "80%"
+          ],
+          "correct_index": 1,
+          "explanation": "The conversion rate is calculated as (20 / 80) * 100%.",
+          "question_id": "Seorang agen mencapai 20 kunjungan rumah yang berhasil dari 80 total pertanyaan calon pembeli. Berapa persentase rasio konversinya?",
+          "options_id": [
+            "20%",
+            "25%",
+            "40%",
+            "80%"
+          ],
+          "explanation_id": "Rasio konversi dihitung sebagai (20 / 80) * 100%."
+        }
+      ],
+      "title_id": "Keterampilan Agen Properti: Pencocokan & Konversi"
+    },
+    "quality_reviews": [
+      {
+        "checks": [
+          {
+            "question_index": 0,
+            "reason": "The question lacks an explicit criterion for 'garden' in the source notes, but since it is a self-contained hypothetical buyer requirement, it is valid. However, the price 'Rp 1.500.000.000' is a specific threshold that must be strictly observed.",
+            "criterion_is_explicit": true,
+            "defensible_indices": [
+              2
+            ],
+            "translation_is_faithful": true
+          },
+          {
+            "question_index": 1,
+            "reason": "The conversion rate formula is explicitly provided by the numbers in the question (20 successes out of 80 inquiries), allowing for a clear arithmetic calculation.",
+            "criterion_is_explicit": true,
+            "defensible_indices": [
+              1
+            ],
+            "translation_is_faithful": true
+          }
+        ],
+        "approved": true,
+        "issues": []
+      }
+    ],
+    "audit_option_order": "Each audit uses zero-based question/option indices in its pre-shuffle batch of up to two questions.",
+    "answer_selection": "Correct keys selected programmatically; not an employee attempt."
+  }
+}

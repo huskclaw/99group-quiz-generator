@@ -33,6 +33,9 @@ assert not app.error, [error.value for error in app.error]
 assert app.session_state.page == "quiz"
 session = app.session_state.quiz_session
 assert session.reviewed
+assert all(q.question_id and q.options_id and q.explanation_id for q in session.quiz.questions)
+assert session.quiz.title_id
+assert any(session.quiz.questions[0].question_id in c.value for c in app.caption)
 answers = [q.correct_index if i == 0 else (q.correct_index + 1) % 4
            for i, q in enumerate(session.quiz.questions)]
 for radio, answer in zip(app.radio, answers):
@@ -40,6 +43,7 @@ for radio, answer in zip(app.radio, answers):
 button(app, "Submit answers").click().run()
 assert not app.exception
 assert app.session_state.page == "results"
+assert any(session.quiz.questions[0].explanation_id in c.value for c in app.caption)
 assert len(app.get("download_button")) == 1
 payload = json.loads(results_json(session, app.session_state.submitted_answers))
 assert payload["score"] == 1 and payload["total"] == 2
@@ -49,6 +53,6 @@ payload["verification"] = {
     "answer_selection": "One correct and one deliberately wrong answer selected programmatically.",
     "visual_browser_verification": False,
 }
-(ROOT / "examples/live-app-check.json").write_text(
+(ROOT / "examples/bilingual-app-check.json").write_text(
     json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-print("PASS: real AI generation, answers, submission, 1/2 scoring and results download.")
+print("PASS: real bilingual AI generation, English/Indonesian display, 1/2 scoring and results download.")

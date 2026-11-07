@@ -15,6 +15,8 @@ def test_samples_and_scoring(topic_id, count):
     assert len(session.quiz.questions) == count
     correct = [q.correct_index for q in session.quiz.questions]
     assert score_quiz(session.quiz, correct) == count
+    assert session.quiz.title_id
+    assert all(q.question_id and q.options_id and q.explanation_id for q in session.quiz.questions)
     assert score_quiz(session.quiz, [(a + 1) % 4 for a in correct]) == 0
     payload = json.loads(results_json(session, correct))
     assert payload["percentage"] == 100
@@ -28,6 +30,7 @@ def test_shuffle_preserves_answer_text():
     mixed = shuffled(quiz)
     for old, new in zip(quiz.questions, mixed.questions):
         assert old.options[old.correct_index] == new.options[new.correct_index]
+        assert old.options_id[old.correct_index] == new.options_id[new.correct_index]
         assert old.explanation == new.explanation
 
 

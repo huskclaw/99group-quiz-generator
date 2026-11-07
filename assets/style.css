@@ -43,6 +43,7 @@ h3 { font-size:1.08rem !important; }
 .result-option { padding:.5rem .7rem; margin:.35rem 0; border-radius:8px; border:1px solid #e2e8f0; font-size:.9rem; }
 .result-option.correct { background:#edf9f3; border-color:#b4e5ce; color:#116541; }
 .result-option.wrong { background:#fff2f1; border-color:#f0c4c0; color:#a23931; }
+.translation { margin-top:.25rem; font-size:.85em; opacity:.85; line-height:1.6; }
 .footer { margin-top:2rem; padding-top:1rem; border-top:1px solid #dde5f0; display:flex; justify-content:space-between; flex-wrap:wrap; gap:.4rem; font-size:.7rem; color:#7a8aa0; }
 @media (max-width:640px) {
  .block-container { padding:1rem 1rem 2rem; }

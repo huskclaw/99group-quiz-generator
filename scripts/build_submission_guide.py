@@ -53,16 +53,19 @@ Paste the actual prompt text below directly into the form, then the explanation.
 
 '''
 
-example_path = ROOT / "examples/live-app-check.json"
+example_path = ROOT / "examples/bilingual-app-check.json"
+if not example_path.exists():
+    example_path = ROOT / 'examples/live-app-check.json'
 if example_path.exists():
     example = json.loads(example_path.read_text(encoding="utf-8"))
     question = example["questions"][0]
-    choices = "\n".join(f"{'ABCD'[i]}. {option}" for i, option in enumerate(question["options"]))
+    choices = "\n".join(f"{'ABCD'[i]}. {option}" + ('\n   ' + question['options_id'][i] if question.get('options_id') else '') for i, option in enumerate(question["options"]))
     actual_output = ("### Actual local-model output example\n\n```text\n"
         + "Source: AI generated locally with Gemma 4 12B QAT; accepted after per-question review.\n"
-        + "Question: " + question["question"] + "\n" + choices + "\n"
+        + "Question: " + question["question"] + ('\n' + question['question_id'] if question.get('question_id') else '') + "\n" + choices + "\n"
         + "Correct answer: " + "ABCD"[question["correct_index"]] + ". "
         + question["options"][question["correct_index"]] + "\nWhy: " + question["explanation"]
+        + ('\nAlasan: ' + question['explanation_id'] if question.get('explanation_id') else '')
         + "\n```\n\nThe app verification selected one correct and one wrong answer across two questions and recorded a 1/2 score. That is a programmatic test attempt, not an employee result.\n\n")
     intro = intro.replace("## Field 2 — Submit your repo/workflow", actual_output + "## Field 2 — Submit your repo/workflow")
 parts = [intro]
@@ -74,7 +77,7 @@ parts.append("\nFor other requests, the same template substitutes the requested 
 parts.append("\n### Actual reviewer system prompt\n\n```text\n" +
              (ROOT / "prompts/reviewer.txt").read_text(encoding="utf-8").strip() + "\n```\n")
 parts.append('''
-The review user message is a JSON object containing `topic`, `reference_notes` and the complete `candidate` quiz. It varies with the generated quiz. Both stages use schema-constrained API responses. The generation schema requires a title and 1–5 questions; each question has exactly four options, a `correct_answer` string that exactly matches one option, and an explanation. Python derives the answer index from that string before review. The reviewer returns per-question checks (`question_index`, a short `reason`, `criterion_is_explicit`, and `defensible_indices`), plus `approved` and a list of `issues`. Python requires an audit for every question, an explicit criterion, and exactly one defensible index matching the original key. See `quiz.py` and `generator.py` for the exact contracts.
+The review user message contains `topic`, `reference_notes`, `indexing` and a `candidate` batch of at most two questions. Both stages use schema-constrained responses. Generation returns English fields plus Indonesian `_id` translations and a `correct_answer` string exactly matching one English option. Python derives the index. The reviewer returns per-question `question_index`, `reason`, `criterion_is_explicit`, `defensible_indices` and `translation_is_faithful`, plus `approved` and `issues`. Every question must have one defensible index matching its key and a faithful Indonesian translation. The exact contracts are in `quiz.py` and `generator.py`.
 
 The actual revision suffix is one of:
 
@@ -97,6 +100,8 @@ Suggested text to adapt:
 > The model has no live market feed. For current market topics I supply dated notes; otherwise the app asks for stable concepts and hypothetical scenarios. The synthetic Jakarta briefing is labelled fictional. Model review is a useful filter, not proof of factual correctness, so formal employee assessment would still need human content approval.
 >
 > I used AI coding assistance to implement and check the prototype. The actual runtime quiz prompts are pasted above. I would describe my own review, changes and testing here before submitting.
+
+> The updated version accepts English and Indonesian topics and displays both languages for every question, choice and explanation. Unrelated topics require explicit fun-mode consent; obvious repetition and instruction overrides are rejected locally. Notes are limited to 3,000 characters and every request is checked with the actual model tokenizer before inference. Busy slots are refused rather than queued. A user-reported idle-GPU timeout exposed a stuck model prefill. Full SWA caching helped some tests but did not eliminate recurring Vulkan stalls, so the final tested setup uses a SHA256-verified official CUDA runtime in a separate project folder with the same existing Gemma file and unchanged graphics driver. The normal two launch commands are preserved.
 
 ## Field 4 — Any repo (optional)
 

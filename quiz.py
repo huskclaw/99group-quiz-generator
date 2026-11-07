@@ -8,6 +8,7 @@ from datetime import datetime, timezone
 from typing import Annotated
 
 from pydantic import BaseModel, ConfigDict, Field, StringConstraints, model_validator
+from input_rules import MAX_NOTES_CHARS, MAX_TOPIC_CHARS, readable_text
 
 Text = Annotated[str, StringConstraints(strip_whitespace=True, min_length=1, max_length=700)]
 Option = Annotated[str, StringConstraints(strip_whitespace=True, min_length=1, max_length=250)]
@@ -24,6 +25,9 @@ class Question(BaseModel):
     options: list[Option] = Field(min_length=4, max_length=4)
     correct_index: int = Field(ge=0, le=3)
     explanation: Text
+    question_id: Text | None = None
+    options_id: list[Option] | None = Field(default=None, min_length=4, max_length=4)
+    explanation_id: Text | None = None
 
     @model_validator(mode="after")
     def distinct_options(self):
@@ -33,6 +37,12 @@ class Question(BaseModel):
         banned = {"all of the above", "none of the above", "all answers", "semua benar", "semua jawaban benar"}
         if any(choice in banned for choice in choices):
             raise ValueError("Each option must stand on its own.")
+        translations = (self.question_id, self.options_id, self.explanation_id)
+        if any(value is not None for value in translations):
+            if not all(value is not None for value in translations):
+                raise ValueError('All Indonesian question, option and explanation fields are required together.')
+            if len(set(normalized(option) for option in self.options_id)) != 4:
+                raise ValueError('Indonesian options must also be distinct.')
         return self
 
 
@@ -40,6 +50,7 @@ class Quiz(BaseModel):
     model_config = ConfigDict(extra="forbid", strict=True)
     title: Title
     questions: list[Question] = Field(min_length=1, max_length=5)
+    title_id: Title | None = None
 
     @model_validator(mode="after")
     def distinct_questions(self):
@@ -56,21 +67,26 @@ class GeneratedQuestion(BaseModel):
     options: list[Option] = Field(min_length=4, max_length=4)
     correct_answer: Option
     explanation: Text
+    question_id: Text
+    options_id: list[Option] = Field(min_length=4, max_length=4)
+    explanation_id: Text
 
     def to_question(self) -> Question:
         if self.options.count(self.correct_answer) != 1:
             raise ValueError("The correct answer must exactly match one option.")
         return Question(question=self.question, options=self.options,
-                        correct_index=self.options.index(self.correct_answer), explanation=self.explanation)
+                        correct_index=self.options.index(self.correct_answer), explanation=self.explanation,
+                        question_id=self.question_id, options_id=self.options_id, explanation_id=self.explanation_id)
 
 
 class GeneratedQuiz(BaseModel):
     model_config = ConfigDict(extra="forbid", strict=True)
     title: Title
     questions: list[GeneratedQuestion] = Field(min_length=1, max_length=5)
+    title_id: Title
 
     def to_quiz(self) -> Quiz:
-        return Quiz(title=self.title, questions=[q.to_question() for q in self.questions])
+        return Quiz(title=self.title, title_id=self.title_id, questions=[q.to_question() for q in self.questions])
 
 
 @dataclass(frozen=True)
@@ -83,6 +99,7 @@ class QuizSession:
     has_notes: bool = False
     created_at: str = ""
     source_notes: str = ""
+    topic_scope: str = "work"
 
     def __post_init__(self):
         if not self.created_at:
@@ -91,12 +108,14 @@ class QuizSession:
 
 def validate_request(topic: str, count: int, notes: str = "") -> str:
     topic = " ".join(topic.split())
-    if not 3 <= len(topic) <= 160:
+    if not 3 <= len(topic) <= MAX_TOPIC_CHARS:
         raise ValueError("Enter a topic between 3 and 160 characters.")
     if type(count) is not int or not 1 <= count <= 5:
         raise ValueError("Choose between 1 and 5 questions.")
-    if len(notes) > 6000:
-        raise ValueError("Keep source notes within 6,000 characters.")
+    if len(notes) > MAX_NOTES_CHARS:
+        raise ValueError("Keep source notes within 3,000 characters. / Batasi catatan referensi hingga 3.000 karakter.")
+    readable_text(topic, 'Topic / Topik')
+    readable_text(notes, 'Reference notes / Catatan referensi')
     return topic
 
 
@@ -107,7 +126,8 @@ def shuffled(quiz: Quiz) -> Quiz:
         order = list(range(4))
         secrets.SystemRandom().shuffle(order)
         questions.append(q.model_copy(update={"options": [q.options[i] for i in order],
-                                               "correct_index": order.index(q.correct_index)}))
+            "options_id": [q.options_id[i] for i in order] if q.options_id is not None else None,
+            "correct_index": order.index(q.correct_index)}))
     return quiz.model_copy(update={"questions": questions})
 
 
@@ -120,7 +140,9 @@ def score_quiz(quiz: Quiz, answers: list[int | None]) -> int:
 def results_json(session: QuizSession, answers: list[int]) -> str:
     score = score_quiz(session.quiz, answers)
     return json.dumps({
-        "title": session.quiz.title, "topic": session.topic,
+        "title": session.quiz.title, "title_id": getattr(session.quiz, 'title_id', None), "topic": session.topic,
+        "topic_scope": getattr(session, 'topic_scope', 'work'),
+        "languages": ["en", "id"] if all(getattr(q, 'question_id', None) for q in session.quiz.questions) else ["en"],
         "source": session.source, "model": session.model,
         "ai_quality_review": session.reviewed, "source_notes_provided": session.has_notes,
         "created_at": session.created_at, "score": score,

@@ -1,0 +1,90 @@
+{
+  "title": "Cookie Baking Calculation",
+  "title_id": "Perhitungan Pembuatan Kue",
+  "topic": "give me cookie recipe",
+  "topic_scope": "exploratory",
+  "languages": [
+    "en",
+    "id"
+  ],
+  "source": "AI generated · local Gemma",
+  "model": "gemma-4-12b",
+  "ai_quality_review": true,
+  "source_notes_provided": false,
+  "created_at": "2026-11-07T08:40:29+00:00",
+  "score": 1,
+  "total": 1,
+  "percentage": 100,
+  "questions": [
+    {
+      "question": "In a hypothetical scenario, a recipe requires 250 grams of flour to make 12 cookies. How many grams of flour are needed to make 36 cookies?",
+      "options": [
+        "1000 grams",
+        "750 grams",
+        "1250 grams",
+        "500 grams"
+      ],
+      "correct_index": 1,
+      "explanation": "Since 36 cookies is three times the amount of 12 cookies, multiply 250 grams by 3.",
+      "question_id": "Dalam skenario hipotetis, sebuah resep membutuhkan 250 gram tepung untuk membuat 12 kue. Berapa gram tepung yang dibutuhkan untuk membuat 36 kue?",
+      "options_id": [
+        "1000 gram",
+        "750 gram",
+        "1250 gram",
+        "500 gram"
+      ],
+      "explanation_id": "Karena 36 kue adalah tiga kali jumlah 12 kue, kalikan 250 gram dengan 3.",
+      "selected_index": 1,
+      "is_correct": true
+    }
+  ],
+  "verification": {
+    "elapsed_seconds": 6.64,
+    "api_completions": 2,
+    "notes_characters": 0,
+    "reviewed_candidate": {
+      "title": "Cookie Baking Calculation",
+      "questions": [
+        {
+          "question": "In a hypothetical scenario, a recipe requires 250 grams of flour to make 12 cookies. How many grams of flour are needed to make 36 cookies?",
+          "options": [
+            "500 grams",
+            "750 grams",
+            "1000 grams",
+            "1250 grams"
+          ],
+          "correct_index": 1,
+          "explanation": "Since 36 cookies is three times the amount of 12 cookies, multiply 250 grams by 3.",
+          "question_id": "Dalam skenario hipotetis, sebuah resep membutuhkan 250 gram tepung untuk membuat 12 kue. Berapa gram tepung yang dibutuhkan untuk membuat 36 kue?",
+          "options_id": [
+            "500 gram",
+            "750 gram",
+            "1000 gram",
+            "1250 gram"
+          ],
+          "explanation_id": "Karena 36 kue adalah tiga kali jumlah 12 kue, kalikan 250 gram dengan 3."
+        }
+      ],
+      "title_id": "Perhitungan Pembuatan Kue"
+    },
+    "quality_reviews": [
+      {
+        "checks": [
+          {
+            "question_index": 0,
+            "reason": "The question lacks a defined formula or explicit matching constraint in the source notes; however, it provides self-contained hypothetical numbers and a clear arithmetic requirement.",
+            "criterion_is_explicit": true,
+            "defensible_indices": [
+              1
+            ],
+            "translation_is_faithful": true
+          }
+        ],
+        "approved": true,
+        "issues": []
+      }
+    ],
+    "audit_option_order": "Each audit uses zero-based question/option indices in its pre-shuffle batch of up to two questions.",
+    "answer_selection": "Correct keys selected programmatically; not an employee attempt."
+  }
+}

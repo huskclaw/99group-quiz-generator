@@ -1,0 +1,51 @@
+{
+  "runtime_label": "Official llama.cpp b12182 CUDA 12.4",
+  "configuration": "8192 context, full SWA cache; synthetic inputs only",
+  "synthetic_requests": [
+    {
+      "input_tokens": 1447,
+      "elapsed_seconds": 0.88,
+      "finish_reason": "stop"
+    },
+    {
+      "input_tokens": 2847,
+      "elapsed_seconds": 0.98,
+      "finish_reason": "stop"
+    },
+    {
+      "input_tokens": 4247,
+      "elapsed_seconds": 1.41,
+      "finish_reason": "stop"
+    },
+    {
+      "input_tokens": 1447,
+      "elapsed_seconds": 0.59,
+      "finish_reason": "stop"
+    },
+    {
+      "input_tokens": 2847,
+      "elapsed_seconds": 1.0,
+      "finish_reason": "stop"
+    },
+    {
+      "input_tokens": 4247,
+      "elapsed_seconds": 1.41,
+      "finish_reason": "stop"
+    },
+    {
+      "input_tokens": 1447,
+      "elapsed_seconds": 0.55,
+      "finish_reason": "stop"
+    },
+    {
+      "input_tokens": 2847,
+      "elapsed_seconds": 0.97,
+      "finish_reason": "stop"
+    },
+    {
+      "input_tokens": 4247,
+      "elapsed_seconds": 1.41,
+      "finish_reason": "stop"
+    }
+  ]
+}

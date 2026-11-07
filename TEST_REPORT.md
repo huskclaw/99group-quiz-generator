@@ -2,6 +2,42 @@
 
 Date: **7 November 2026 (Asia/Bangkok)**. These results describe this local build, not a production deployment or an employee trial.
 
+## Current update: input resilience and bilingual quizzes
+
+**77 offline tests pass** after this update. Python compilation and the updated PowerShell launcher parser check also pass. The additional tests cover English/Indonesian work-topic recognition, explicit topic-specific fun-mode consent, rejected instruction overrides and repetition, the 3,000-character notes limit, tokenizer-based context rejection before inference, busy-slot refusal, malformed slot responses, paired-language shuffling/display, and rejection of unfaithful translations even when the reviewer says approved.
+
+### Reproduced user-reported stall
+
+The existing process answered `/health` with OK, but repeated `/slots` snapshots showed its only slot stuck at **1,536 / 1,705 prompt tokens processed, with zero generated tokens**. Its input was well below the 8,192-token context. Shorter requests could therefore time out behind the occupied slot; reducing notes again would not recover that process. The running executable was the installed Vulkan build, with the documented original flags.
+
+The model process was restarted without stopping the user's web server. Adding `--swa-full` initially passed 1,447-, 2,847- and 4,247-token synthetic probes and bilingual source-note tests. However, a later app run stalled again during prompt processing. **Full SWA caching was not a sufficient fix for the installed Vulkan build.** The failed app check returned an actionable timeout; it was not recorded as a pass.
+
+The final tested runtime is a separate **official llama.cpp b12182 CUDA 12.4** installation under ignored `.tools/llama-cuda/`, using the same existing Gemma GGUF. Official release-asset SHA256 digests were checked before extraction/execution. No model weights, system installation, PATH, graphics driver or Windows settings were changed. `start-llama.ps1` now prefers that local runtime; the reproducible setup helper and checksums are in `scripts/setup_cuda.py`. CUDA device discovery identified the RTX 4070 Ti SUPER, and an active inference observation showed **95% GPU utilization**.
+
+### Final CUDA evidence
+
+| Check | Questions | Inference completions | Observed time | Evidence |
+| --- | ---: | ---: | ---: | --- |
+| Indonesian topic, bilingual output | 2 | 2 | 13.42 s | [bilingual-indonesian.json](examples/bilingual-indonesian.json) |
+| English topic, bilingual output | 2 | 2 | 17.55 s | [bilingual-english.json](examples/bilingual-english.json) |
+| 3,000-character synthetic Indonesian briefing | 5 | 4 | 27.31 s | [bilingual-long-notes.json](examples/bilingual-long-notes.json) |
+| Explicitly allowed cookie-topic fun quiz | 1 | 2 | 6.64 s | [bilingual-fun.json](examples/bilingual-fun.json) |
+| Real-model Streamlit flow, mixed 1/2 score | 2 | 2 | 14.23 s | [bilingual-app-check.json](examples/bilingual-app-check.json) |
+
+Nine additional synthetic requests cycled through 1,447, 2,847 and 4,247 input tokens three times without a stall; see [context-probe.json](examples/context-probe.json). The mixed verification sequence on CUDA completed 23 inference requests, including the initial matrix, repeated probes, another Indonesian-topic run and the app check. These observations support the selected local configuration; they do not guarantee indefinite stability or prove the underlying Vulkan defect's cause.
+
+Quizzes were inspected for both-language presence, paired correct choices and explanation agreement. The app check confirms English question text, Indonesian text beneath it, bilingual answer options, both explanations after submission, and results-download availability through Streamlit AppTest. This remains headless functional verification; it does not replace browser/phone visual inspection.
+
+### Review and scope corrections
+
+An early Indonesian-topic run was rejected because the reviewer incorrectly required source notes for self-contained hypothetical constraints. The instructions now explicitly allow hypothetical arithmetic and buyer requirements without notes; only real current claims require source support. Rate questions must identify the success count and denominator, rather than assuming a 100% conversion from vague wording.
+
+Current generation returns both languages together. Each review handles at most two questions and must confirm translation fidelity as well as a uniquely defensible answer. Python shuffles English/Indonesian options as pairs. Obvious spam and direct override phrases are rejected locally; off-topic prose gets a heuristic warning and requires explicit per-topic exploratory consent. Notes are capped at 3,000 characters, and every inference request is checked using the real chat template/tokenizer against its context with reserved output and a safety margin. Oversized text is rejected, not silently truncated. Neither the scope heuristic nor model review is a formal guarantee of semantic correctness.
+
+## Historical first-version evidence
+
+The sections below record the original English-only build, its 55-test result and its earlier failures. Current `bilingual-*.json` files and the section above describe the revised behavior.
+
 ## Automated regression checks
 
 Command:

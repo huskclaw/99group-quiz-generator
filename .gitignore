@@ -8,3 +8,4 @@ __pycache__/
 *.gguf
 local.settings.ps1
 artifacts/
+.tools/

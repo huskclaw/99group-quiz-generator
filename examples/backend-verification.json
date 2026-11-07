@@ -1,0 +1,12 @@
+{
+  "runtime": "Official llama.cpp b12182 CUDA 12.4",
+  "same_existing_model_file": "gemma-4-12B-it-qat-UD-Q4_K_XL.gguf",
+  "launched_inference_requests": 23,
+  "released_inference_requests": 23,
+  "health": {
+    "status": "ok"
+  },
+  "all_slots_idle": true,
+  "observed_gpu_utilization_during_one_active_request_percent": 95,
+  "configuration_notes": "Same model weights and driver; separate project-local official CUDA runtime. Not an indefinite stability guarantee."
+}

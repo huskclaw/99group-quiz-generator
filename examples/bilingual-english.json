@@ -1,0 +1,139 @@
+{
+  "title": "Property Matching Accuracy",
+  "title_id": "Akurasi Pencocokan Properti",
+  "topic": "Matching property listings to explicit buyer constraints",
+  "topic_scope": "work",
+  "languages": [
+    "en",
+    "id"
+  ],
+  "source": "AI generated · local Gemma",
+  "model": "gemma-4-12b",
+  "ai_quality_review": true,
+  "source_notes_provided": false,
+  "created_at": "2026-11-07T08:39:54+00:00",
+  "score": 2,
+  "total": 2,
+  "percentage": 100,
+  "questions": [
+    {
+      "question": "In a hypothetical scenario, a buyer requires a 3-bedroom house under Rp 2,000,000,000 with a garden. Which listing matches all criteria?",
+      "options": [
+        "Listing D: 4 bedrooms, Rp 1,700,000,000, no garden",
+        "Listing B: 3 bedrooms, Rp 1,950,000,000, garden included",
+        "Listing A: 2 bedrooms, Rp 1,800,000,000, garden included",
+        "Listing C: 3 bedrooms, Rp 2,100,000,000, garden included"
+      ],
+      "correct_index": 1,
+      "explanation": "Listing B meets the bedroom count, price limit, and garden requirement.",
+      "question_id": "Dalam skenario hipotetis, seorang pembeli membutuhkan rumah 3 kamar tidur di bawah Rp 2.000.000.000 dengan taman. Listing mana yang memenuhi semua kriteria?",
+      "options_id": [
+        "Listing D: 4 kamar tidur, Rp 1.700.000.000, tanpa taman",
+        "Listing B: 3 kamar tidur, Rp 1.950.000.000, termasuk taman",
+        "Listing A: 2 kamar tidur, Rp 1.800.000.000, termasuk taman",
+        "Listing C: 3 kamar tidur, Rp 2.100.000.000, termasuk taman"
+      ],
+      "explanation_id": "Listing B memenuhi jumlah kamar tidur, batas harga, dan persyaratan taman.",
+      "selected_index": 1,
+      "is_correct": true
+    },
+    {
+      "question": "A client wants a commercial space with a minimum of 150 sqm and a maximum price of Rp 5,000,000,000. Which listing is eligible?",
+      "options": [
+        "Unit 2: 160 sqm, Rp 5,200,000,000",
+        "Unit 1: 120 sqm, Rp 4,500,000,000",
+        "Unit 3: 180 sqm, Rp 4,800,000,000",
+        "Unit 4: 200 sqm, Rp 6,000,000,000"
+      ],
+      "correct_index": 2,
+      "explanation": "Unit 3 is the only listing that satisfies both the size and price constraints.",
+      "question_id": "Klien menginginkan ruang komersial dengan minimal 150 sqm dan harga maksimal Rp 5.000.000.000. Listing mana yang memenuhi syarat?",
+      "options_id": [
+        "Unit 2: 160 sqm, Rp 5.200.000.000",
+        "Unit 1: 120 sqm, Rp 4.500.000.000",
+        "Unit 3: 180 sqm, Rp 4.800.000.000",
+        "Unit 4: 200 sqm, Rp 6.000.000.000"
+      ],
+      "explanation_id": "Unit 3 adalah satu-satunya listing yang memenuhi batasan ukuran dan harga.",
+      "selected_index": 2,
+      "is_correct": true
+    }
+  ],
+  "verification": {
+    "elapsed_seconds": 17.55,
+    "api_completions": 2,
+    "notes_characters": 0,
+    "reviewed_candidate": {
+      "title": "Property Matching Accuracy",
+      "questions": [
+        {
+          "question": "In a hypothetical scenario, a buyer requires a 3-bedroom house under Rp 2,000,000,000 with a garden. Which listing matches all criteria?",
+          "options": [
+            "Listing A: 2 bedrooms, Rp 1,800,000,000, garden included",
+            "Listing B: 3 bedrooms, Rp 1,950,000,000, garden included",
+            "Listing C: 3 bedrooms, Rp 2,100,000,000, garden included",
+            "Listing D: 4 bedrooms, Rp 1,700,000,000, no garden"
+          ],
+          "correct_index": 1,
+          "explanation": "Listing B meets the bedroom count, price limit, and garden requirement.",
+          "question_id": "Dalam skenario hipotetis, seorang pembeli membutuhkan rumah 3 kamar tidur di bawah Rp 2.000.000.000 dengan taman. Listing mana yang memenuhi semua kriteria?",
+          "options_id": [
+            "Listing A: 2 kamar tidur, Rp 1.800.000.000, termasuk taman",
+            "Listing B: 3 kamar tidur, Rp 1.950.000.000, termasuk taman",
+            "Listing C: 3 kamar tidur, Rp 2.100.000.000, termasuk taman",
+            "Listing D: 4 kamar tidur, Rp 1.700.000.000, tanpa taman"
+          ],
+          "explanation_id": "Listing B memenuhi jumlah kamar tidur, batas harga, dan persyaratan taman."
+        },
+        {
+          "question": "A client wants a commercial space with a minimum of 150 sqm and a maximum price of Rp 5,000,000,000. Which listing is eligible?",
+          "options": [
+            "Unit 1: 120 sqm, Rp 4,500,000,000",
+            "Unit 2: 160 sqm, Rp 5,200,000,000",
+            "Unit 3: 180 sqm, Rp 4,800,000,000",
+            "Unit 4: 200 sqm, Rp 6,000,000,000"
+          ],
+          "correct_index": 2,
+          "explanation": "Unit 3 is the only listing that satisfies both the size and price constraints.",
+          "question_id": "Klien menginginkan ruang komersial dengan minimal 150 sqm dan harga maksimal Rp 5.000.000.000. Listing mana yang memenuhi syarat?",
+          "options_id": [
+            "Unit 1: 120 sqm, Rp 4.500.000.000",
+            "Unit 2: 160 sqm, Rp 5.200.000.000",
+            "Unit 3: 180 sqm, Rp 4.800.000.000",
+            "Unit 4: 200 sqm, Rp 6.000.000.000"
+          ],
+          "explanation_id": "Unit 3 adalah satu-satunya listing yang memenuhi batasan ukuran dan harga."
+        }
+      ],
+      "title_id": "Akurasi Pencocokan Properti"
+    },
+    "quality_reviews": [
+      {
+        "checks": [
+          {
+            "question_index": 0,
+            "reason": "The question defines three explicit constraints: 3 bedrooms, price < 2B, and garden presence. Listing B is the only option meeting all three. Listing A fails bedrooms, C fails price, and D fails garden.",
+            "criterion_is_explicit": true,
+            "defensible_indices": [
+              1
+            ],
+            "translation_is_faithful": true
+          },
+          {
+            "question_index": 1,
+            "reason": "The question defines two explicit constraints: minimum 150 sqm and maximum price 5B. Unit 3 (180 sqm, 4.8B) satisfies both. Unit 1 fails size, Unit 2 fails price, and Unit 4 fails price.",
+            "criterion_is_explicit": true,
+            "defensible_indices": [
+              2
+            ],
+            "translation_is_faithful": true
+          }
+        ],
+        "approved": true,
+        "issues": []
+      }
+    ],
+    "audit_option_order": "Each audit uses zero-based question/option indices in its pre-shuffle batch of up to two questions.",
+    "answer_selection": "Correct keys selected programmatically; not an employee attempt."
+  }
+}

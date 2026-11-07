@@ -14,6 +14,8 @@ from settings import Settings
 def test_readiness_requires_health_and_matching_model(monkeypatch, health, models, expected):
     client_class = httpx.Client
     def handle(request):
+        if request.url.path == '/slots':
+            return httpx.Response(200, json=[{'n_ctx': 8192, 'is_processing': False}])
         return httpx.Response(health, json={"status": "ok"}) if request.url.path == "/health" else httpx.Response(200, json=models)
     monkeypatch.setattr(generator.httpx, "Client", lambda **kwargs: client_class(transport=httpx.MockTransport(handle)))
     assert generator.check_server(Settings()) == expected

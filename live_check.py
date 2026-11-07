@@ -14,6 +14,7 @@ def main():
     parser.add_argument("--topic", default="Top skills of a property agent in 2026")
     parser.add_argument("--count", type=int, choices=range(1, 6), default=5)
     parser.add_argument("--notes-file", type=Path)
+    parser.add_argument('--allow-off-topic', action='store_true', help='Explicitly allow an exploratory fun topic.')
     parser.add_argument("--output", type=Path, default=Path("examples/live-quiz.json"))
     args = parser.parse_args()
     settings = Settings.from_env()
@@ -23,7 +24,8 @@ def main():
     notes = args.notes_file.read_text(encoding="utf-8") if args.notes_file else ""
     started = time.monotonic()
     try:
-        session = generate_quiz(args.topic, args.count, notes, settings)
+        session = generate_quiz(args.topic, args.count, notes, settings,
+            allow_off_topic=args.allow_off_topic, progress=lambda label: print(label, flush=True))
     except (GenerationError, ValueError) as exc:
         parser.exit(1, str(exc) + "\n")
     payload = json.loads(results_json(session, [q.correct_index for q in session.quiz.questions]))
