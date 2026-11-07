@@ -126,6 +126,67 @@
       "approved": true,
       "issues": []
     },
-    "answer_selection": "Correct keys selected programmatically to verify scoring; not an employee attempt."
+    "answer_selection": "Correct keys selected programmatically to verify scoring; not an employee attempt.",
+    "audit_option_order": "Review indices refer to reviewed_candidate before answer shuffling. Top-level questions use shuffled positions.",
+    "reviewed_candidate": {
+      "title": "Property Agent Skills Application",
+      "questions": [
+        {
+          "question": "A client provides three specific constraints for a residential unit: a budget of Rp 5,000,000,000, a minimum of 3 bedrooms, and a location within 500 meters of an MRT station. Which property listing satisfies all three constraints?",
+          "options": [
+            "A 3-bedroom unit for Rp 4,800,000,000 located 600 meters from the MRT station.",
+            "A 4-bedroom unit for Rp 5,200,000,000 located 300 meters from the MRT station.",
+            "A 3-bedroom unit for Rp 4,900,000,000 located 400 meters from the MRT station.",
+            "A 2-bedroom unit for Rp 4,500,000,000 located 200 meters from the MRT station."
+          ],
+          "correct_index": 2,
+          "explanation": "This listing is the only one that meets the budget (under Rp 5B), the bedroom count (at least 3), and the distance (under 500m) simultaneously."
+        },
+        {
+          "question": "In a hypothetical negotiation, a seller's walk-away price is Rp 3,000,000,000. A buyer submits an offer of Rp 2,800,000,000. To protect the seller's walk-away price while keeping the negotiation active, which action is a valid counter-offer that meets the Rp 3,000,000,000 minimum?",
+          "options": [
+            "Accepting the offer of Rp 2,800,000,000 to close the deal quickly.",
+            "Submitting a counter-offer of Rp 3,100,000,000 to the buyer.",
+            "Asking the buyer to increase their offer by Rp 50,000,000.",
+            "Rejecting the offer and ending all communication with the buyer."
+          ],
+          "correct_index": 1,
+          "explanation": "A counter-offer of Rp 3,100,000,000 is a specific numerical action that satisfies the constraint of staying above the Rp 3,000,000,000 walk-away price."
+        },
+        {
+          "question": "An agent is calculating the Gross Yield for a rental property. The annual rental income is Rp 120,000,000 and the property purchase price was Rp 1,200,000,000. What is the Gross Yield percentage?",
+          "options": [
+            "8%",
+            "10%",
+            "12%",
+            "15%"
+          ],
+          "correct_index": 1,
+          "explanation": "Gross Yield is calculated as (Annual Rent / Purchase Price) x 100. (120,000,000 / 1,200,000,000) x 100 = 10%."
+        },
+        {
+          "question": "A client asks for the exact status of a property's legal documents. The agent discovers the 'Sertifikat Hak Milik' (SHM) is currently held by a bank for a mortgage, but the 'IMB' (Building Permit) is fully cleared. Which statement is a factually accurate representation of the status?",
+          "options": [
+            "The property is completely clear and ready for immediate transfer of ownership.",
+            "The property has no legal issues as the IMB is fully cleared by the local government.",
+            "The SHM is currently encumbered by a bank mortgage, while the IMB is clear.",
+            "The property is unavailable for sale until the bank releases the SHM and the IMB."
+          ],
+          "correct_index": 2,
+          "explanation": "This option accurately reflects both pieces of evidence provided without adding subjective interpretations or incorrect conclusions."
+        },
+        {
+          "question": "In a hypothetical lead generation campaign, an agent generates 200 leads. 50 leads are categorized as 'Qualified' based on budget and intent. Out of those 50 qualified leads, 5 schedule a viewing. What is the Viewing Conversion Rate for qualified leads?",
+          "options": [
+            "2.5%",
+            "10%",
+            "25%",
+            "50%"
+          ],
+          "correct_index": 1,
+          "explanation": "Viewing Conversion Rate is (Completed Viewings / Qualified Leads) x 100. (5 / 50) x 100 = 10%."
+        }
+      ]
+    }
   }
 }

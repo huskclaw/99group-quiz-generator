@@ -45,7 +45,7 @@ All three final cases completed with the strengthened per-question review enable
 | Jakarta market briefing interpretation | 5 | 3 | 28.55 s | [live-jakarta.json](examples/live-jakarta.json) |
 | Playful hypothetical floor-area puzzle | 1 | 2 | 5.97 s | [live-property-puzzle.json](examples/live-property-puzzle.json) |
 
-Each saved case includes the accepted quiz, answer key, explanations, model/source metadata, creation time, measured duration, and final per-question quality audit. The Jakarta case includes the exact **fictional** briefing used. The model did not browse for real Jakarta market updates.
+Each saved case includes the accepted quiz, answer key, explanations, model/source metadata, creation time, measured duration, and final per-question quality audit. The audit indices refer to the saved `reviewed_candidate` before answer shuffling; the top-level quiz uses its final shuffled positions. The Jakarta case includes the exact **fictional** briefing used. The model did not browse for real Jakarta market updates.
 
 These runs selected the accepted answer keys programmatically and verified full-score exports. That checks the scoring implementation against the keys; it is **not** a factual accuracy benchmark or a real learner's score. Timings are individual observations, not guaranteed performance. The four-call agent-skills case used its revision budget. The three-call market case needed a second generation after an invalid response before its final successful review.
 

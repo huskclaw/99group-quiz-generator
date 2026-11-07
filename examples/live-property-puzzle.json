@@ -42,6 +42,23 @@
       "approved": true,
       "issues": []
     },
-    "answer_selection": "Correct keys selected programmatically to verify scoring; not an employee attempt."
+    "answer_selection": "Correct keys selected programmatically to verify scoring; not an employee attempt.",
+    "audit_option_order": "Review indices refer to reviewed_candidate before answer shuffling. Top-level questions use shuffled positions.",
+    "reviewed_candidate": {
+      "title": "Property Floor-Area Calculation",
+      "questions": [
+        {
+          "question": "A hypothetical residential unit has a rectangular floor plan with a length of 12 meters and a width of 8 meters. If a balcony with an area of 15 square meters is added to the exterior, what is the total floor area of the unit?",
+          "options": [
+            "96 square meters",
+            "111 square meters",
+            "100 square meters",
+            "108 square meters"
+          ],
+          "correct_index": 1,
+          "explanation": "The main area is 12m x 8m = 96 square meters. Adding the 15 square meter balcony results in a total of 111 square meters."
+        }
+      ]
+    }
   }
 }

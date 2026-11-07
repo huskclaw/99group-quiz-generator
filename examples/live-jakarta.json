@@ -126,6 +126,67 @@
       "approved": true,
       "issues": []
     },
-    "answer_selection": "Correct keys selected programmatically to verify scoring; not an employee attempt."
+    "answer_selection": "Correct keys selected programmatically to verify scoring; not an employee attempt.",
+    "audit_option_order": "Review indices refer to reviewed_candidate before answer shuffling. Top-level questions use shuffled positions.",
+    "reviewed_candidate": {
+      "title": "Jakarta Property Market Updates - District A Analysis",
+      "questions": [
+        {
+          "question": "According to the supplied briefing, what was the median advertised price in District A for the month of October?",
+          "options": [
+            "Rp2.0 billion",
+            "Rp2.1 billion",
+            "Rp2.05 billion",
+            "Rp2.2 billion"
+          ],
+          "correct_index": 1,
+          "explanation": "The briefing explicitly states that the median advertised price in District A was Rp2.1 billion in October."
+        },
+        {
+          "question": "Based on the dataset provided, what is the numerical difference in the number of new listings between September and October?",
+          "options": [
+            "20 listings",
+            "40 listings",
+            "10 listings",
+            "50 listings"
+          ],
+          "correct_index": 0,
+          "explanation": "New listings fell from 100 in September to 80 in October, resulting in a decrease of 20."
+        },
+        {
+          "question": "The briefing provides data on advertised prices and enquiries. Which of the following data points is NOT included in the dataset?",
+          "options": [
+            "Median advertised prices",
+            "Number of enquiries",
+            "Completed sales",
+            "Number of new listings"
+          ],
+          "correct_index": 2,
+          "explanation": "The notes specify that the dataset records advertised prices and enquiries, but not completed sales or signed leases."
+        },
+        {
+          "question": "What was the percentage increase in enquiries from September to October in District A?",
+          "options": [
+            "10%",
+            "20%",
+            "25%",
+            "15%"
+          ],
+          "correct_index": 1,
+          "explanation": "Enquiries rose from 200 to 240. The calculation is (40 increase / 200 original) * 100 = 20%."
+        },
+        {
+          "question": "A team member claims the data proves that rising enquiries are caused by the increase in median prices. Based on the supplied briefing, is this claim supported?",
+          "options": [
+            "Yes, because both metrics increased",
+            "Yes, because the price rose by Rp100 million",
+            "No, because no causal explanation is established",
+            "No, because the enquiry count is too low"
+          ],
+          "correct_index": 2,
+          "explanation": "The briefing explicitly states that no causal explanation for these changes is established by the dataset."
+        }
+      ]
+    }
   }
 }

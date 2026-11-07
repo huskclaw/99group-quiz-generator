@@ -8,8 +8,8 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
 import httpx
-from generator import check_server, generate_quiz
-from quiz import results_json
+from generator import Review, check_server, generate_quiz, review_passes
+from quiz import GeneratedQuiz, results_json
 from settings import Settings
 
 cases = [
@@ -42,9 +42,16 @@ for topic, count, notes, filename in cases:
                           event_hooks={"response": [record]}) as client:
             session = generate_quiz(topic, count, notes, settings, client=client)
         payload = json.loads(results_json(session, [q.correct_index for q in session.quiz.questions]))
+        candidate_data = next(json.loads(entry["content"]) for entry in reversed(trace)
+                              if "questions" in json.loads(entry.get("content", "{}")))
+        reviewed_candidate = GeneratedQuiz.model_validate(candidate_data).to_quiz()
+        final_review = json.loads(trace[-1]["content"])
+        assert review_passes(Review.model_validate(final_review), reviewed_candidate)
         payload["verification"] = {"elapsed_seconds": round(time.monotonic() - started, 2),
             "api_requests": len(trace), "reference_notes": notes,
-            "quality_review": json.loads(trace[-1]["content"]),
+            "quality_review": final_review,
+            "audit_option_order": "Review indices refer to reviewed_candidate before answer shuffling. Top-level questions use shuffled positions.",
+            "reviewed_candidate": reviewed_candidate.model_dump(),
             "answer_selection": "Correct keys selected programmatically to verify scoring; not an employee attempt."}
         (ROOT / "examples" / filename).write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
         print(f"PASS: {filename}, {payload['verification']['elapsed_seconds']} seconds", flush=True)
